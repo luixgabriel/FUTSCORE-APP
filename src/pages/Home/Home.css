@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepage {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.homepage img {
+  width: 40%;
+}
+
+.homepage h1 {
+  width: 50%;
+  font-size: 5.5rem;
+}
