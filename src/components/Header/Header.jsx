@@ -11,11 +11,6 @@ function Header() {
           <ul className="menu__list r-list">
             <li className="menu__group">
               <a href="#0" className="menu__link r-link text-underlined">
-                Tabelas
-              </a>
-            </li>
-            <li className="menu__group">
-              <a href="#0" className="menu__link r-link text-underlined">
                 times
               </a>
             </li>
@@ -27,6 +22,11 @@ function Header() {
             <li className="menu__group">
               <a href="#0" className="menu__link r-link text-underlined">
                 partida
+              </a>
+            </li>
+            <li className="menu__group">
+              <a href="#0" className="menu__link r-link text-underlined">
+                Tabelas
               </a>
             </li>
           </ul>
