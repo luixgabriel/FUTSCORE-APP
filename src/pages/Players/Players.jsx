@@ -13,7 +13,6 @@ function Players() {
       const teamsAPI = await response.json();
       setTeams(teamsAPI);
     };
-
     getTeams();
   }, []);
 

@@ -7,4 +7,32 @@
   background-color: aquamarine;
   width: 90%;
   margin-top: 30px;
+  padding: 20px 20px;
+}
+
+ .teams {
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+
+}
+.list-teams{
+  border: 1px solid yellow;
+  width: 22%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.list-teams h2 {
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+
+.list-teams img {
+  width: 200px;
 }

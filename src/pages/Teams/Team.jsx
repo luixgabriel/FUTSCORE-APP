@@ -24,6 +24,91 @@ function Teams() {
       <div className="players-main">
         <div className="section-players">
           <h1>Times Cadastrados:</h1>
+          <div className="teams">
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+
+            <div className="list-teams">
+              <img
+                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
+                alt="vasco"
+              />
+              <h2>VASCO</h2>
+              <span>Gigante da colina</span>
+              <div className="team-buttons">
+                <button type="submit">Editar</button>
+                <button type="submit">Apagar</button>
+                <button type="submit">Mais informações</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
