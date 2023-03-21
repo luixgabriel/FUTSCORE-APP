@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Jumpoff ;
+  src: url('../src/assets/fonts/JumpoffDemoRegular.ttf');
+}
 
 :root {
   --primaryColor: #ebedf0;

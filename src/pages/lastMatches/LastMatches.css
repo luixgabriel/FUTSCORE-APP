@@ -1,14 +1,46 @@
 .lastMatches {
-  width: 70%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 8px;
-  background-color: aquamarine;
+  background-color: #fafaf0c9;
+  border-radius: 8px;
   padding: 20px;
 }
 
 .lastMatches h1 {
   font-size: 3rem;
 }
+
+.matchCurrent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.matchCurrent p {
+  color: rgb(236, 74, 74);
+  margin: 5px 0;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game h4{
+  font-size: 1.8rem;
+
+}
+
+.game span{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
