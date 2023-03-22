@@ -9,44 +9,44 @@ function LastMatches() {
         <div className="matchCurrent">
           <p>EM ANDAMENTO</p>
           <div className="game">
-            <h4 style={{ 'margin-right': '20px' }}>Arsenal</h4>
+            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
             <span>3</span>
             <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
             <span>0</span>
-            <h4 style={{ 'margin-left': '20px' }}>Vasco</h4>
+            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
           </div>
         </div>
 
         <div className="matchCurrent">
           <p>EM ANDAMENTO</p>
           <div className="game">
-            <h4 style={{ 'margin-right': '20px' }}>Arsenal</h4>
+            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
             <span>3</span>
             <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
             <span>0</span>
-            <h4 style={{ 'margin-left': '20px' }}>Vasco</h4>
+            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
           </div>
         </div>
 
         <div className="matchCurrent">
           <p style={{ color: 'green' }}>FINALIZADO</p>
           <div className="game">
-            <h4 style={{ 'margin-right': '20px' }}>Arsenal</h4>
+            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
             <span>3</span>
             <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
             <span>0</span>
-            <h4 style={{ 'margin-left': '20px' }}>Vasco</h4>
+            <h4 style={{ marginleft: '20px' }}>Vasco</h4>
           </div>
         </div>
 
         <div className="matchCurrent">
           <p>EM ANDAMENTO</p>
           <div className="game">
-            <h4 style={{ 'margin-right': '20px' }}>Arsenal</h4>
+            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
             <span>3</span>
             <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
             <span>0</span>
-            <h4 style={{ 'margin-left': '20px' }}>Vasco</h4>
+            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
           </div>
         </div>
       </div>

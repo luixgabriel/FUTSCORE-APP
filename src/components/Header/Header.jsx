@@ -13,10 +13,8 @@ function Header() {
           </Link>
           <ul className="menu__list r-list">
             <li className="menu__group">
-              <Link to="/times">
-                <a href="#0" className="menu__link r-link text-underlined">
-                  times
-                </a>
+              <Link to="/times" className="menu__link r-link text-underlined">
+                times
               </Link>
             </li>
             <li className="menu__group">
