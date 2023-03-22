@@ -4,23 +4,20 @@ import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import noShield from '../../assets/imgs/no-shield.png';
 import './Team.css';
+import axios from '../../services/axios';
 
 function Teams() {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
     const getTeams = async () => {
-      const response = await fetch(
-        'https://apiintersala-production.up.railway.app/'
-      );
-      const teamsAPI = await response.json();
-      setTeams(teamsAPI);
+      const teamsAPI = await axios.get();
+      setTeams(teamsAPI.data);
     };
 
     getTeams();
   }, []);
 
-  console.log(teams);
   return (
     <>
       <Header />

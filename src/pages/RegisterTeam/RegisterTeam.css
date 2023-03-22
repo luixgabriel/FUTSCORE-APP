@@ -6,10 +6,45 @@
 }
 
 .registerTeam {
-  width: 90%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: aqua;
+
+}
+
+.registerTeam input {
+  display: block;
+  margin: 20px;
+  width: 500px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.registerTeam button {
+  padding: 10px 30px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.registerTeam button:hover{
+  background-color: #fff;
+  color: black;
+}
+
+.team-button {
+  display: flex;
+  justify-content: center;
 }
