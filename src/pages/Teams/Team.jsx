@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import './Team.css';
 
@@ -23,7 +25,14 @@ function Teams() {
       <Header />
       <div className="players-main">
         <div className="section-players">
-          <h1>Times Cadastrados:</h1>
+          <div className="titles">
+            <h1>Times cadastrados:</h1>
+            <button type="submit">
+              <span>Adicionar novo time</span>
+              <i />
+            </button>
+          </div>
+
           <div className="teams">
             <div className="list-teams">
               <img
@@ -33,10 +42,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
 
             <div className="list-teams">
@@ -47,10 +60,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
 
             <div className="list-teams">
@@ -61,10 +78,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
 
             <div className="list-teams">
@@ -75,10 +96,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
 
             <div className="list-teams">
@@ -89,10 +114,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
 
             <div className="list-teams">
@@ -103,10 +132,14 @@ function Teams() {
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">
-                <button type="submit">Editar</button>
-                <button type="submit">Apagar</button>
-                <button type="submit">Mais informações</button>
+                <Link to="/">
+                  <FaEdit />
+                </Link>
+                <Link to="/">
+                  <FaWindowClose />
+                </Link>
               </div>
+              <button type="submit">Mais informações</button>
             </div>
           </div>
         </div>

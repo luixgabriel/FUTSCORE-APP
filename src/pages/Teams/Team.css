@@ -4,23 +4,132 @@
   align-items: center;
 }
 .section-players{
-  background-color: aquamarine;
+  background-color:rgba(22, 22, 22, 0.35);
   width: 90%;
+  border-radius: 10px;
   margin-top: 30px;
   padding: 20px 20px;
 }
 
- .teams {
-  background-color: brown;
+.titles {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  height: 50px
+}
+
+.titles button {
+  position: relative;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.titles button:hover {
+  letter-spacing: 0.2rem;
+  padding: 1.1rem 3.1rem;
+  background: rgb(16, 190, 16);
+  color: rgb(16, 190, 16);
+  /* box-shadow: 0 0 35px var(--clr); */
+  animation: box 3s infinite;
+}
+
+.titles button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+}
+
+.titles button span {
+  position: relative;
+  z-index: 1;
+}
+.titles button i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.titles button i::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 80%;
+  top: -2px;
+  border: 2px solid rgb(16, 190, 16);
+  background: #272822;
+  transition: 0.2s;
+}
+
+.titles button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: move 3s infinite;
+}
+
+.titles button i::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 20%;
+  bottom: -2px;
+  border: 2px solid rgb(16, 190, 16);
+  background: #272822;
+  transition: 0.2s;
+}
+
+.titles button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: move 3s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes box {
+  0% {
+    box-shadow: #27272c;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--clr);
+  }
+  100% {
+    box-shadow: #27272c;
+  }
+}
+
+.teams {
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px;
-
+  gap: 45px;
+  width: 100%;
 }
 .list-teams{
-  border: 1px solid yellow;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #fafaf8c9;
+  border-radius: 10px;
   width: 22%;
   display: flex;
   justify-content: center;
@@ -34,5 +143,34 @@
 }
 
 .list-teams img {
-  width: 200px;
+  width: 180px;
 }
+.list-teams button {
+  border: none;
+  padding: 5px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: transparent;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.team-buttons a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin: 5px 3px;
+}
+.team-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+

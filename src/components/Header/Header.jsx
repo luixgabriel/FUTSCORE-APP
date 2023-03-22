@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/imgs/bola.png';
 
@@ -7,12 +8,16 @@ function Header() {
     <header>
       <div className="page">
         <nav className="page__menu menu">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <ul className="menu__list r-list">
             <li className="menu__group">
-              <a href="#0" className="menu__link r-link text-underlined">
-                times
-              </a>
+              <Link to="/times">
+                <a href="#0" className="menu__link r-link text-underlined">
+                  times
+                </a>
+              </Link>
             </li>
             <li className="menu__group">
               <a href="#0" className="menu__link r-link text-underlined">

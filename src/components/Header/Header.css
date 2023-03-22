@@ -1,3 +1,7 @@
+a {
+  color: black;
+  text-decoration: none;
+}
 .page img{
   width: 55px;
   height: 55px;
@@ -28,17 +32,16 @@
 }
 
 
-.menu__link:focus {
+/* .menu__link:focus {
   outline: var(--menuLinkOutlineWidth, 2px) solid
     var(--menuLinkOutlineColor, currentColor);
   outline-offset: var(--menuLinkOutlineOffset);
-}
+} */
 
 
 .menu:hover .menu__link:not(:hover) {
   --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, 0.35));
 }
-
 
 
 .menu {
