@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
+import noShield from '../../assets/imgs/no-shield.png';
 import './Team.css';
 
 function Teams() {
@@ -27,10 +28,12 @@ function Teams() {
         <div className="section-players">
           <div className="titles">
             <h1>Times cadastrados:</h1>
-            <button type="submit">
-              <span>Adicionar novo time</span>
-              <i />
-            </button>
+            <Link to="/registrarTime">
+              <button type="submit">
+                <span>Adicionar novo time</span>
+                <i />
+              </button>
+            </Link>
           </div>
 
           <div className="teams">
@@ -53,10 +56,7 @@ function Teams() {
             </div>
 
             <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
+              <img src={noShield} alt="vasco" />
               <h2>VASCO</h2>
               <span>Gigante da colina</span>
               <div className="team-buttons">

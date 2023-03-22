@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Players from './pages/Players/Players';
 import Teams from './pages/Teams/Team';
+import RegisterTeam from './pages/RegisterTeam/RegisterTeam';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/jogadores" element={<Players />} />
         <Route path="/times" element={<Teams />} />
+        <Route path="/registrarTime" element={<RegisterTeam />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

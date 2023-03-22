@@ -18,6 +18,10 @@
   height: 50px
 }
 
+.titles a {
+  color: whitesmoke;
+}
+
 .titles button {
   position: relative;
   background: #444;
@@ -132,6 +136,7 @@
   background-color: #fafaf8c9;
   border-radius: 10px;
   width: 22%;
+  height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,10 +146,12 @@
 .list-teams h2 {
   font-size: 1.9rem;
   font-weight: bold;
+
 }
 
 .list-teams img {
-  width: 180px;
+  width: 200px;
+  height: 160px;
 }
 .list-teams button {
   border: none;
@@ -155,6 +162,11 @@
   border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.list-teams button:hover {
+  text-decoration: underline;
 }
 .team-buttons a {
   text-decoration: none;
