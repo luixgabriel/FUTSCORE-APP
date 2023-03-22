@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Header from '../../components/Header/Header';
 import './RegisterTeam.css';
 import axios from '../../services/axios';
+
+const MySwal = withReactContent(Swal);
 
 function RegisterTeam() {
   const [name, setName] = useState('');
@@ -9,14 +13,28 @@ function RegisterTeam() {
   const [slogan, setSlogan] = useState('');
   const [shield, setShield] = useState('');
 
-  const sendPicture = async (e) => {
-    const picture = e.target.files[0];
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post('create', { name, players, slogan });
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('players', players);
+    formData.append('slogan', slogan);
+    formData.append('shield', shield);
+
+    const { data } = await axios.post('create', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
     console.log(data);
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      didOpen: () => {
+        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+        MySwal.showLoading();
+      },
+    }).then(() => MySwal.fire(<p>Shorthand works too</p>));
   };
 
   return (
@@ -53,7 +71,11 @@ function RegisterTeam() {
               onChange={(e) => setPlayers(e.target.value)}
               required
             />
-            <input type="file" id="shield" onChange={sendPicture} />
+            <input
+              type="file"
+              id="shield"
+              onChange={(e) => setShield(e.target.files[0])}
+            />
             <div className="team-button">
               <button type="submit">Criar time</button>
             </div>
