@@ -122,8 +122,9 @@
 .teams {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 45px;
+  gap: 20px;
   width: 100%;
 }
 .list-teams{
