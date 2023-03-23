@@ -119,6 +119,7 @@ button:active > svg > path {
   border-radius: 10px;
   margin-bottom: 20px;
   cursor: pointer;
+  color: black;
 }
 
 .list-teams button:hover {

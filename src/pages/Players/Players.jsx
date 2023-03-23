@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Shirt from '../../assets/imgs/camisatime.png';
 import './Players.css';
@@ -11,16 +12,18 @@ function Players() {
         <div className="list-players">
           <div className="titles-players">
             <div />
-            <button type="submit">
-              <span>ADICIONAR UM JOGADOR</span>
-              <svg
-                viewBox="-5 -5 110 110"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
-              </svg>
-            </button>
+            <Link to="/registrarJogador">
+              <button type="submit">
+                <span>ADICIONAR UM JOGADOR</span>
+                <svg
+                  viewBox="-5 -5 110 110"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
+                </svg>
+              </button>
+            </Link>
           </div>
 
           <table>

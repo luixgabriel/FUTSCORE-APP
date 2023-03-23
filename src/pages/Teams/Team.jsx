@@ -16,6 +16,7 @@ function Teams() {
     };
 
     getTeams();
+    console.log(teams);
   }, []);
 
   return (
