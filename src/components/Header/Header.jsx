@@ -18,9 +18,12 @@ function Header() {
               </Link>
             </li>
             <li className="menu__group">
-              <a href="#0" className="menu__link r-link text-underlined">
+              <Link
+                to="/jogadores"
+                className="menu__link r-link text-underlined"
+              >
                 jogadores
-              </a>
+              </Link>
             </li>
             <li className="menu__group">
               <a href="#0" className="menu__link r-link text-underlined">

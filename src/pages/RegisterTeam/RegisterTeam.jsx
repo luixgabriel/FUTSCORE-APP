@@ -28,13 +28,32 @@ function RegisterTeam() {
     });
 
     console.log(data);
-    MySwal.fire({
-      title: <p>Hello World</p>,
-      didOpen: () => {
-        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-        MySwal.showLoading();
-      },
-    }).then(() => MySwal.fire(<p>Shorthand works too</p>));
+
+    if (data.msg) {
+      MySwal.fire({
+        title: <p>Ooops..</p>,
+        text: data.msg,
+        icon: 'error',
+        timer: 2000,
+        confirmButtonText: 'Tentar novamente',
+      });
+    } else {
+      MySwal.fire({
+        title: <p>Tudo certo!</p>,
+        text: 'Time registrado com sucesso.',
+        icon: 'success',
+        timer: 2000,
+        confirmButtonText: 'oi',
+      });
+    }
+
+    // MySwal.fire({
+    //   title: <p>Hello World</p>,
+    //   didOpen: () => {
+    //     // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+    //     MySwal.showLoading();
+    //   },
+    // }).then(() => MySwal.fire(<p>Shorthand works too</p>));
   };
 
   return (

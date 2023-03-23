@@ -1,10 +1,37 @@
-.players-main {
+.players {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.section-players{
-  background-color: aquamarine;
-  width: 90%;
   margin-top: 30px;
+}
+.list-players{
+  width: 90%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+table th{
+   background-color:rgba(22, 22, 22, 0.35);
+}
+th img{
+  width: 35px;
+}
+table tr th {
+  width: 200px;
+  padding: 15px 0px;
+  font-size: 1.1rem;
+}
+table tr th:first-child {
+  width: 50px;
+}
+
+table tr td {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid rgba(22, 22, 22, 0.35); ;
+  background-color: var(--primaryColor);
 }
