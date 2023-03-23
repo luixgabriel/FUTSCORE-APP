@@ -43,7 +43,6 @@ function RegisterTeam() {
         text: 'Time registrado com sucesso.',
         icon: 'success',
         timer: 2000,
-        confirmButtonText: 'oi',
       });
     }
 
@@ -96,7 +95,16 @@ function RegisterTeam() {
               onChange={(e) => setShield(e.target.files[0])}
             />
             <div className="team-button">
-              <button type="submit">Criar time</button>
+              <button type="submit">
+                <span>CRIAR TIME</span>
+                <svg
+                  viewBox="-5 -5 110 110"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
+                </svg>
+              </button>
             </div>
           </form>
         </div>

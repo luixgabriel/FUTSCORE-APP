@@ -39,10 +39,6 @@
   transition: all ease 0.3s;
 }
 
-.registerTeam button:hover{
-  background-color: #fff;
-  color: black;
-}
 
 .team-button {
   display: flex;
