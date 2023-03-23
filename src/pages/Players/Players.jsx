@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import Shirt from '../../assets/imgs/camisatime.png';
 import './Players.css';
+import axios from '../../services/axios';
 
 function Players() {
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    const getPlayers = async () => {
+      const response = await axios.get('/player/showPlayers');
+      setPlayers(response.data);
+    };
+
+    getPlayers();
+  }, []);
   return (
     <>
       <Header />
@@ -28,21 +40,26 @@ function Players() {
               <th>TIME</th>
               <th>GOLS</th>
               <th>ASSISTÊNCIAS</th>
+              <th>AÇÕES</th>
             </tr>
-            <tr>
-              <td>11</td>
-              <td>Luis gabriel</td>
-              <td>vasco</td>
-              <td>12</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Luis gabriel</td>
-              <td>vasco</td>
-              <td>12</td>
-              <td>21</td>
-            </tr>
+            {players.map((player) => (
+              <tr key={player.id}>
+                <td>{player.numberTshirt}</td>
+                <td>{player.name}</td>
+                <td>{player.team}</td>
+                <td>{player.goals}</td>
+                <td>{player.assists}</td>
+                <td>
+                  <Link to="/">
+                    <FaEdit />
+                  </Link>
+
+                  <Link to="/">
+                    <FaWindowClose />
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </table>
         </div>
       </div>

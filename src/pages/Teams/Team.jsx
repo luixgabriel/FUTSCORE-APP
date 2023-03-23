@@ -34,110 +34,25 @@ function Teams() {
           </div>
 
           <div className="teams">
-            <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
+            {teams.map((t) => (
+              <div className="list-teams" key={t.id}>
+                <img
+                  src={t.shield === 'null' ? noShield : t.shield}
+                  alt="EscudoTime"
+                />
+                <h2>{t.name}</h2>
+                <span>{t.slogan}</span>
+                <div className="team-buttons">
+                  <Link to="/">
+                    <FaEdit />
+                  </Link>
+                  <Link to="/">
+                    <FaWindowClose />
+                  </Link>
+                </div>
+                <button type="submit">Mais informações</button>
               </div>
-              <button type="submit">Mais informações</button>
-            </div>
-
-            <div className="list-teams">
-              <img src={noShield} alt="vasco" />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
-              </div>
-              <button type="submit">Mais informações</button>
-            </div>
-
-            <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
-              </div>
-              <button type="submit">Mais informações</button>
-            </div>
-
-            <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
-              </div>
-              <button type="submit">Mais informações</button>
-            </div>
-
-            <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
-              </div>
-              <button type="submit">Mais informações</button>
-            </div>
-
-            <div className="list-teams">
-              <img
-                src="https://logodownload.org/wp-content/uploads/2016/09/vasco-logo-0.png"
-                alt="vasco"
-              />
-              <h2>VASCO</h2>
-              <span>Gigante da colina</span>
-              <div className="team-buttons">
-                <Link to="/">
-                  <FaEdit />
-                </Link>
-                <Link to="/">
-                  <FaWindowClose />
-                </Link>
-              </div>
-              <button type="submit">Mais informações</button>
-            </div>
+            ))}
           </div>
         </div>
       </div>

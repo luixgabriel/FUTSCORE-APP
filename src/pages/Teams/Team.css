@@ -48,6 +48,11 @@ background-color: black;
   gap: 20px;
   width: 100%;
 }
+.teams span {
+  margin: 5px;
+  width: 100%;
+  text-align: center;
+}
 .list-teams{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: #fafaf8c9;
@@ -67,8 +72,8 @@ background-color: black;
 }
 
 .list-teams img {
-  width: 200px;
-  height: 160px;
+  width: 180px;
+  height: 140px;
 }
 .list-teams button {
   border: none;
@@ -78,7 +83,7 @@ background-color: black;
   background: transparent;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   cursor: pointer;
   color: black;
 }
