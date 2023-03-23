@@ -28,14 +28,7 @@ function Teams() {
             <h1>Times cadastrados:</h1>
             <Link to="/registrarTime">
               <button type="submit">
-                <span>ADICIONAR UM NOVO TIME</span>
-                <svg
-                  viewBox="-5 -5 110 110"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
-                </svg>
+                <span>Adicionar um novo time</span>
               </button>
             </Link>
           </div>

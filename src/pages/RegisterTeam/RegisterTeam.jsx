@@ -96,14 +96,7 @@ function RegisterTeam() {
             />
             <div className="team-button">
               <button type="submit">
-                <span>CRIAR TIME</span>
-                <svg
-                  viewBox="-5 -5 110 110"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
-                </svg>
+                <span>Registrar time</span>
               </button>
             </div>
           </form>
