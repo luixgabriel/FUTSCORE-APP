@@ -1,0 +1,33 @@
+.match-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-match{
+  width: 90%;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.section-match img {
+  width: 500px;
+}
+
+.match-stats {
+  margin-top: 20px;
+  border: 1px solid red;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-1 img{
+  width: 100px;
+}
+
+.team-2 img{
+  width: 100px;
+}

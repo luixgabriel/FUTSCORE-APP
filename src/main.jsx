@@ -6,6 +6,7 @@ import Players from './pages/Players/Players';
 import Teams from './pages/Teams/Team';
 import RegisterTeam from './pages/RegisterTeam/RegisterTeam';
 import RegisterPlayer from './pages/RegisterPlayer/RegisterPlayer';
+import Match from './pages/Match/Match';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/times" element={<Teams />} />
         <Route path="/registrarTime" element={<RegisterTeam />} />
         <Route path="/registrarJogador" element={<RegisterPlayer />} />
+        <Route path="/partida" element={<Match />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

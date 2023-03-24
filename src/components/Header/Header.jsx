@@ -26,9 +26,9 @@ function Header() {
               </Link>
             </li>
             <li className="menu__group">
-              <a href="#0" className="menu__link r-link text-underlined">
+              <Link to="/partida" className="menu__link r-link text-underlined">
                 partida
-              </a>
+              </Link>
             </li>
             <li className="menu__group">
               <a href="#0" className="menu__link r-link text-underlined">
