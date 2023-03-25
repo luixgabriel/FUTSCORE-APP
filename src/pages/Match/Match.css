@@ -5,29 +5,79 @@
 }
 .section-match{
   width: 90%;
-  background-color: aqua;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 30px;
 }
 
-.section-match img {
+.soccerField{
   width: 500px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .match-stats {
   margin-top: 20px;
-  border: 1px solid red;
   width: 50%;
   display: flex;
   justify-content: space-between;
 }
 
+.team-1 {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.team-1 select{
+  width: 120px;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
 .team-1 img{
   width: 100px;
+}
+.team-1 h2 {
+  margin: 10px 0;
+}
+
+.team-2 {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.team-2 select{
+  width: 120px;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+.team-2 img{
+  width: 100px;
+}
+.team-2 h2 {
+  margin: 10px 0;
 }
 
 .team-2 img{
   width: 100px;
+}
+.match-options{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+.duration {
+  padding: 10px;
+}
+.duration h2 {
+  margin: 5px 0;
+}
+.duration input {
+  margin: 5px 8px;
 }
