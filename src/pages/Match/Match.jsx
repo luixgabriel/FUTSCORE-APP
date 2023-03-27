@@ -9,8 +9,11 @@ import axios from '../../services/axios';
 
 const MySwal = withReactContent(Swal);
 function Match() {
-  // const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [times, setTimes] = useState(0);
   const [checkedboxes, setCheckedboxes] = useState([]);
+  const [team1, setTeam1] = useState('');
+  const [team2, setTeam2] = useState('');
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
@@ -22,10 +25,9 @@ function Match() {
     getTeams();
   }, []);
 
-  const handleChange = async (e) => {
+  const checkboxChange = async (e) => {
     const { value } = e.target;
     const { checked } = e.target;
-    console.log(value);
 
     if (checked) {
       setCheckedboxes([...checkedboxes, value]);
@@ -44,7 +46,19 @@ function Match() {
         window.location.reload();
       }, '1500');
     }
+    setDuration(value);
   };
+
+  const createMatch = async () => {
+    const teamsCreate = [team1, team2];
+
+    const { data } = await axios.post('match/', {
+      name: teamsCreate,
+      duration,
+      times,
+    });
+  };
+
   return (
     <>
       <Header />
@@ -55,11 +69,12 @@ function Match() {
             <div className="team-1">
               <img src={shirtTeam} alt={shirtTeam} />
               <h2>TIME 1</h2>
-              <select>
-                <option>Vasco</option>
-                <option>Vasco</option>
-                <option>Vasco</option>
-                <option>Vasco</option>
+              <select onChange={(e) => setTeam1(e.target.value)}>
+                {teams.map((team) => (
+                  <option key={team.id} value={team.name}>
+                    {team.name}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -70,7 +85,7 @@ function Match() {
                   type="checkbox"
                   name="10"
                   value="10"
-                  onChange={handleChange}
+                  onChange={checkboxChange}
                 />
                 10min
                 <br />
@@ -78,7 +93,7 @@ function Match() {
                   type="checkbox"
                   name="10"
                   value="15"
-                  onChange={handleChange}
+                  onChange={checkboxChange}
                 />
                 15min
                 <br />
@@ -86,7 +101,7 @@ function Match() {
                   type="checkbox"
                   name="10"
                   value="30"
-                  onChange={handleChange}
+                  onChange={checkboxChange}
                 />
                 30min
                 <br />
@@ -94,25 +109,40 @@ function Match() {
                   type="checkbox"
                   name="10"
                   value="45"
-                  onChange={handleChange}
+                  onChange={checkboxChange}
                 />
                 45min
                 <br />
+              </div>
+              <div className="times">
+                <h2>Tempos</h2>
+                <input
+                  type="number"
+                  value={times}
+                  onChange={(e) => setTimes(e.target.value)}
+                />
               </div>
             </div>
 
             <div className="team-2">
               <img src={shirtTeam} alt={shirtTeam} />
               <h2>TIME 2</h2>
-              <select>
-                <option>Vasco</option>
-                <option>Vasco</option>
-                <option>Vasco</option>
-                <option>Vasco</option>
+              <select
+                onChange={(e) => {
+                  setTeam2(e.target.value);
+                }}
+              >
+                {teams.map((team) => (
+                  <option key={team.id} value={team.name}>
+                    {team.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
-          <button type="submit">Criar partida</button>
+          <button type="submit" onClick={createMatch}>
+            Criar partida
+          </button>
         </div>
       </div>
     </>

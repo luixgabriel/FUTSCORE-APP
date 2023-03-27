@@ -21,8 +21,6 @@ function RegisterPlayer() {
       numberTshirt,
     });
 
-    console.log(data);
-
     if (data.msg) {
       MySwal.fire({
         title: <p>Ooops..</p>,
