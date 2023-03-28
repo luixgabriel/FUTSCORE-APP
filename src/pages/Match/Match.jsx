@@ -6,6 +6,7 @@ import './Match.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import shirtTeam from '../../assets/imgs/shirtTeam.png';
 import axios from '../../services/axios';
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 function Match() {
@@ -15,6 +16,9 @@ function Match() {
   const [team1, setTeam1] = useState('');
   const [team2, setTeam2] = useState('');
   const [teams, setTeams] = useState([]);
+  const [match, setMatch] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getTeams = async () => {
@@ -57,6 +61,8 @@ function Match() {
       duration,
       times,
     });
+    setMatch(data);
+    navigate('/listaPartidas');
   };
 
   return (
