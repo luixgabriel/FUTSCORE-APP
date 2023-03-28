@@ -21,7 +21,7 @@
 .match-configs h2{
   width: 25%;
   text-align: center;
- color: #fff;
+  color: #fff;
 }
 
 .match-info{
@@ -35,11 +35,16 @@
 .match-info div{
   width: 25%;
   text-align: center;
-
 }
 
 .match-info h4{
   font-size: 1.2rem;
+  text-align: center;
+
+}
+
+.match-info .teams {
+  display: flex;
 }
 
 .match-info button {
@@ -47,10 +52,21 @@
     color: white;
     border-radius: 10px;
     border: none;
-    padding: 8px 13px;
+    padding: 8px 10px;
     margin: 5px;
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
     transition: all ease 0.4s;
+}
+
+.t {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+}
+.t h4 {
+
+  width: 33% ;
 }

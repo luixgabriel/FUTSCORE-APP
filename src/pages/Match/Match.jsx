@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import './Match.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import shirtTeam from '../../assets/imgs/shirtTeam.png';
 import axios from '../../services/axios';
-import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 function Match() {
@@ -54,8 +55,23 @@ function Match() {
   };
 
   const createMatch = async () => {
+    if (
+      team1 === '' ||
+      team2 === '' ||
+      duration === '' ||
+      times === '' ||
+      times === 0
+    ) {
+      MySwal.fire({
+        title: <p>Ooops..</p>,
+        text: 'Preencha todas as informações da partida.',
+        icon: 'error',
+        timer: 2000,
+        confirmButtonText: 'Vamos tentar novamente.',
+      });
+      return;
+    }
     const teamsCreate = [team1, team2];
-
     const { data } = await axios.post('match/', {
       name: teamsCreate,
       duration,
@@ -76,6 +92,7 @@ function Match() {
               <img src={shirtTeam} alt={shirtTeam} />
               <h2>TIME 1</h2>
               <select onChange={(e) => setTeam1(e.target.value)}>
+                <option />
                 {teams.map((team) => (
                   <option key={team.id} value={team.name}>
                     {team.name}
@@ -138,6 +155,7 @@ function Match() {
                   setTeam2(e.target.value);
                 }}
               >
+                <option />
                 {teams.map((team) => (
                   <option key={team.id} value={team.name}>
                     {team.name}

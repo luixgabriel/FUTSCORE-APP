@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
-import { GiSoccerBall } from 'react-icons/gi';
+import React, { useEffect, useState } from 'react';
+import { GiSoccerBall, GiTrashCan } from 'react-icons/gi';
 import Header from '../../components/Header/Header';
+import axios from '../../services/axios';
 import './ListMatchs.css';
 
 function ListMatchs() {
   const [matchsInProgress, setMatchsInProgress] = useState([]);
+
+  useEffect(() => {
+    const getMatches = async () => {
+      const matchesAPI = await axios.get('/match/matches');
+      const matches = matchesAPI.data.filter(
+        (match) => match.finished === false
+      );
+      setMatchsInProgress(matches);
+    };
+
+    getMatches();
+  }, []);
 
   return (
     <>
@@ -20,52 +33,37 @@ function ListMatchs() {
 
             <h2>AÇÕES</h2>
           </div>
-          <div className="match-info">
-            <div
-              style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}
-            >
-              <h4>Vasco</h4>
-              <h4>x</h4>
-              <h4>Fluminense</h4>
+          {matchsInProgress.map((match) => (
+            <div key={match.id} className="match-info">
+              <div
+                className="t"
+                // style={{
+                //   display: 'flex',
+                //   justifyContent: 'center',
+                //   width: '25%',
+                //   // border: '1px solid red',
+                // }}
+              >
+                <h4>{match.teams.team1}</h4>
+                <h4>x</h4>
+                <h4>{match.teams.team2}</h4>
+              </div>
+              <div>
+                <h4>{match.duration}</h4>
+              </div>
+              <div>
+                <h4>{match.times}</h4>
+              </div>
+              <div>
+                <button type="submit">
+                  Iniciar partida <GiSoccerBall />{' '}
+                </button>
+                <button type="submit" style={{ backgroundColor: 'red' }}>
+                  Excluir partida <GiTrashCan />
+                </button>
+              </div>
             </div>
-            <div>
-              <h4>50min</h4>
-            </div>
-            <div>
-              <h4>2</h4>
-            </div>
-            <div>
-              <button type="submit">
-                Iniciar partida <GiSoccerBall />{' '}
-              </button>
-              <button type="submit" style={{ backgroundColor: 'red' }}>
-                Excluir partida
-              </button>
-            </div>
-          </div>
-          <div className="match-info">
-            <div
-              style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}
-            >
-              <h4>Vasco</h4>
-              <h4>x</h4>
-              <h4>Fluminense</h4>
-            </div>
-            <div>
-              <h4>50min</h4>
-            </div>
-            <div>
-              <h4>2</h4>
-            </div>
-            <div>
-              <button type="submit">
-                Iniciar partida <GiSoccerBall />
-              </button>
-              <button type="submit" style={{ backgroundColor: 'red' }}>
-                Excluir partida
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
