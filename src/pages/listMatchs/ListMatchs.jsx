@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GiSoccerBall, GiTrashCan } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import axios from '../../services/axios';
 import './ListMatchs.css';
@@ -17,6 +18,7 @@ function ListMatchs() {
     };
 
     getMatches();
+    console.log(matchsInProgress);
   }, []);
 
   return (
@@ -34,7 +36,7 @@ function ListMatchs() {
             <h2>AÇÕES</h2>
           </div>
           {matchsInProgress.map((match) => (
-            <div key={match.id} className="match-info">
+            <div key={match._id} className="match-info">
               <div
                 className="t"
                 // style={{
@@ -56,10 +58,14 @@ function ListMatchs() {
               </div>
               <div>
                 <button type="submit">
-                  Iniciar partida <GiSoccerBall />{' '}
+                  <Link to={`/partida/${match._id}`}>
+                    Iniciar partida <GiSoccerBall />
+                  </Link>
                 </button>
                 <button type="submit" style={{ backgroundColor: 'red' }}>
-                  Excluir partida <GiTrashCan />
+                  <Link to="delete">
+                    Excluir partida <GiTrashCan />
+                  </Link>
                 </button>
               </div>
             </div>

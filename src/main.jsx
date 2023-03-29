@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/registrarTime" element={<RegisterTeam />} />
         <Route path="/registrarJogador" element={<RegisterPlayer />} />
         <Route path="/partida" element={<Match />} />
+        <Route path="/partida/:id" element={<Match />} />
         <Route path="/listaPartidas" element={<ListMatchs />} />
       </Routes>
     </BrowserRouter>

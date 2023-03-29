@@ -18,5 +18,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'no-restricted-globals': 0,
     'no-global-assign': 0,
+    'no-underscore-dangle': 0,
   },
 };
