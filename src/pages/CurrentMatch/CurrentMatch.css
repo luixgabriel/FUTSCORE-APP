@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  background-color: aqua;
 }
 
 .currentMatch-section{
@@ -17,7 +16,7 @@
   display: flex;
   gap: 100px;
 }
-.currentMatch-section img {
+.soccerfield {
   width: 500px;
   margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -39,4 +38,12 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+}
+
+.players-team th {
+  padding: 8px;
+}
+
+.players-team tr th img {
+  width: 35px;
 }

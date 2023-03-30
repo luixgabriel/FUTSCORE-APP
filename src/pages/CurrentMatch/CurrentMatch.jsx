@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 
@@ -28,16 +29,43 @@ function CurrentMatch() {
             <h2>30:00</h2>
           </div>
           <div className="team-goals">
-            <div className="team-1">
+            <div className="teamMatch-1">
               <h3>VASCO</h3>
-              <span>luis</span>
-              <span>messi</span>
-              <span>cr7</span>
-              <span>modric</span>
-              <span>navas</span>
+              <table className="players-team">
+                <tr>
+                  <th>
+                    <img src={Shirt} alt="CamisaTime" />
+                  </th>
+                  <th>jogadores</th>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>luis</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>luis</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>luis</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>luis</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>luis</td>
+                </tr>
+              </table>
             </div>
-            <img src={soccerField} alt="Campo de futebol" />
-            <div className="team-2">
+            <img
+              src={soccerField}
+              className="soccerfield"
+              alt="Campo de futebol"
+            />
+            <div className="teamMatch-2">
               <h3>FLUMINENSE</h3>
               <span>luis</span>
               <span>messi</span>
