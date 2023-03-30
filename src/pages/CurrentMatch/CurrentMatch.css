@@ -1,0 +1,42 @@
+.currentMatch-main{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  background-color: aqua;
+}
+
+.currentMatch-section{
+  border: 1px solid green;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.team-goals{
+  display: flex;
+  gap: 100px;
+}
+.currentMatch-section img {
+  width: 500px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title-teams {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scoreboard{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.time{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
