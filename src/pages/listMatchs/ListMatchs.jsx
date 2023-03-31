@@ -24,6 +24,10 @@ function ListMatchs() {
   return (
     <>
       <Header />
+      <div className="listMatch-button">
+        <button type="submit">Criar nova partida</button>
+      </div>
+
       <div className="listMatchs-main">
         <div className="listMatchs-section">
           <div className="match-configs">

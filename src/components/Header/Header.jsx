@@ -27,7 +27,7 @@ function Header() {
             </li>
             <li className="menu__group">
               <Link to="/partida" className="menu__link r-link text-underlined">
-                partida
+                partidas
               </Link>
             </li>
             <li className="menu__group">

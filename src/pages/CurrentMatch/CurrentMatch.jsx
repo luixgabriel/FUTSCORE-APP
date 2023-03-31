@@ -1,10 +1,12 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Header from '../../components/Header/Header';
 import ModalGoal from '../../components/ModalGoal/ModalGoal';
+import axios from '../../services/axios';
 import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
@@ -13,7 +15,33 @@ const MySwal = withReactContent(Swal);
 
 function CurrentMatch() {
   const { id } = useParams();
-  console.log(id);
+  const [players, setPlayers] = useState('');
+  const [match, setMatch] = useState('');
+
+  useEffect(() => {
+    const getMatch = async () => {
+      const response = await axios.get(`match/searchmatch/${id}`);
+      setMatch(response.data);
+    };
+
+    getMatch();
+  }, []);
+
+  useEffect(() => {
+    const getPlayers = async () => {
+      const response = await axios.get('/player/showPlayers');
+      setPlayers(response.data);
+      const playersTeam1 = players.filter(
+        (player) => player.team === match.teams.team1
+      );
+
+      console.log(playersTeam1);
+    };
+
+    getPlayers();
+  }, [match]);
+
+  console.log(match);
 
   const goalTeam1 = async () => {};
 
@@ -38,16 +66,11 @@ function CurrentMatch() {
             <h2>30:00</h2>
           </div>
 
-          <div className="button-goals">
-            <button type="submit" onClick={goalTeam1}>
-              Gol do vasco <GiSoccerBall />
-            </button>
-            <button type="submit">
-              Gol do vasco <GiSoccerBall />
-            </button>
-          </div>
           <div className="team-goals">
             <div className="teamMatch-1">
+              <button type="submit" onClick={goalTeam1}>
+                Gol do vasco <GiSoccerBall />
+              </button>
               <h3>VASCO</h3>
               <table className="players-team">
                 <tr>
@@ -84,6 +107,9 @@ function CurrentMatch() {
               alt="Campo de futebol"
             />
             <div className="teamMatch-2">
+              <button type="submit">
+                Gol do vasco <GiSoccerBall />
+              </button>
               <h3>VASCO</h3>
               <table className="players-team">
                 <tr>
