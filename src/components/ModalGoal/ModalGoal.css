@@ -1,0 +1,32 @@
+.modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  background-color: #04020460;
+}
+
+.modal {
+  width: 30%;
+  height: 450px;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-header {
+  border: 1px solid green;
+}
+
+.modal-header img{
+  width: 200px;
+}

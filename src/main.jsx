@@ -9,6 +9,7 @@ import RegisterPlayer from './pages/RegisterPlayer/RegisterPlayer';
 import Match from './pages/Match/Match';
 import ListMatchs from './pages/listMatchs/ListMatchs';
 import CurrentMatch from './pages/CurrentMatch/CurrentMatch';
+import ModalGoal from './components/ModalGoal/ModalGoal';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/partida" element={<Match />} />
         <Route path="/partida/:id" element={<CurrentMatch />} />
         <Route path="/listaPartidas" element={<ListMatchs />} />
+        <Route path="/teste" element={<ModalGoal />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

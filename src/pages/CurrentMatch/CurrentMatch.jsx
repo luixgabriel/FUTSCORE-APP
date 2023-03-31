@@ -4,6 +4,7 @@ import { GiSoccerBall } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Header from '../../components/Header/Header';
+import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
@@ -14,37 +15,8 @@ function CurrentMatch() {
   const { id } = useParams();
   console.log(id);
 
-  const goalTeam1 = async () => {
-    const { player } = await MySwal.fire({
-      title: 'Select field validation',
-      input: 'select',
-      inputOptions: {
-        Fruits: {
-          apples: 'Apples',
-          bananas: 'Bananas',
-          grapes: 'Grapes',
-          oranges: 'Oranges',
-        },
-        Vegetables: {
-          potato: 'Potato',
-          broccoli: 'Broccoli',
-          carrot: 'Carrot',
-        },
-        icecream: 'Ice cream',
-      },
-      inputPlaceholder: 'Select a fruit',
-      showCancelButton: true,
-      inputValidator: (value) =>
-        new Promise((resolve) => {
-          if (value === 'oranges') {
-            resolve();
-          } else {
-            resolve('You need to select oranges :)');
-          }
-        }),
-    });
-    console.log(player);
-  };
+  const goalTeam1 = async () => {};
+
   return (
     <>
       <Header />
@@ -65,6 +37,7 @@ function CurrentMatch() {
             <h2>Tempo:</h2>
             <h2>30:00</h2>
           </div>
+
           <div className="button-goals">
             <button type="submit" onClick={goalTeam1}>
               Gol do vasco <GiSoccerBall />
