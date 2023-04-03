@@ -17,31 +17,32 @@ function CurrentMatch() {
   const { id } = useParams();
   const [players, setPlayers] = useState('');
   const [match, setMatch] = useState('');
+  const [team1, setTeam1] = useState('');
+
+  console.log(id);
 
   useEffect(() => {
     const getMatch = async () => {
       const response = await axios.get(`match/searchmatch/${id}`);
       setMatch(response.data);
+      setTeam1(response.data.teams.team1);
     };
-
     getMatch();
   }, []);
 
-  useEffect(() => {
-    const getPlayers = async () => {
-      const response = await axios.get('/player/showPlayers');
-      setPlayers(response.data);
-      const playersTeam1 = players.filter(
-        (player) => player.team === match.teams.team1
-      );
+  // useEffect(() => {
+  //   const getPlayers = async () => {
+  //     const response = await axios.get('/player/showPlayers');
+  //     setPlayers(response.data);
+  //     const playersTeam1 = players.filter(
+  //       (player) => player.team === match.teams.team1
+  //     );
+  //   };
 
-      console.log(playersTeam1);
-    };
+  //   getPlayers();
+  // }, [match]);
 
-    getPlayers();
-  }, [match]);
-
-  console.log(match);
+  // const { team1 } = match.teams;
 
   const goalTeam1 = async () => {};
 
@@ -51,10 +52,13 @@ function CurrentMatch() {
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
-            <h1>VASCO</h1>
+            <p>{match._id}</p>
+
+            <h1>{team1}</h1>
             <h1>X</h1>
-            <h1>FLUMINENSE</h1>
+            <h1>vasco</h1>
           </div>
+
           <div className="scoreboard">
             <h2>Placar:</h2>
             <h2>2</h2>
