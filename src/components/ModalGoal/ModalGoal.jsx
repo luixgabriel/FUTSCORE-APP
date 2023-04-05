@@ -18,18 +18,17 @@ function ModalGoal({ isOpen, onClose, players }) {
             <h4>AUTOR DO GOL</h4>
             <select>
               <option />
-              <option>luis</option>
-              <option>messi</option>
-              <option>neymar</option>
-              <option>modric</option>
+              {players.map((p) => (
+                <option key={p._id}>{p.name}</option>
+              ))}
             </select>
             <h4>AUTOR DA ASSISTÊNCIA</h4>
             <select>
               <option />
               <option>Sem assistência</option>
-              <option>messi</option>
-              <option>neymar</option>
-              <option>modric</option>
+              {players.map((p) => (
+                <option key={p._id}>{p.name}</option>
+              ))}
             </select>
           </div>
           <div className="modal-buttons">

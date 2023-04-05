@@ -21,7 +21,8 @@ function CurrentMatch() {
   const [team1Players, setTeam1Players] = useState([]);
   const [team2Players, setTeam2Players] = useState([]);
   const [scoreboard, setScoreboard] = useState({});
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpenTeam1, setModalOpenTeam1] = useState(false);
+  const [modalOpenTeam2, setModalOpenTeam2] = useState(false);
 
   useEffect(() => {
     const getMatch = async () => {
@@ -47,11 +48,16 @@ function CurrentMatch() {
   }, [match]);
 
   const goalTeam1 = async () => {
-    setIsModalOpen(!isModalOpen);
+    setModalOpenTeam1(!modalOpenTeam1);
+  };
+
+  const goalTeam2 = async () => {
+    setModalOpenTeam2(!modalOpenTeam2);
   };
 
   const modalClose = () => {
-    setIsModalOpen(!isModalOpen);
+    setModalOpenTeam1(false);
+    setModalOpenTeam2(false);
   };
 
   return (
@@ -78,7 +84,11 @@ function CurrentMatch() {
 
           <div className="team-goals">
             <div className="teamMatch-1">
-              <ModalGoal isOpen={isModalOpen} onClose={modalClose} />
+              <ModalGoal
+                isOpen={modalOpenTeam1}
+                onClose={modalClose}
+                players={team1Players}
+              />
               <button type="submit" onClick={goalTeam1}>
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
@@ -108,7 +118,12 @@ function CurrentMatch() {
               alt="Campo de futebol"
             />
             <div className="teamMatch-2">
-              <button type="submit">
+              <ModalGoal
+                isOpen={modalOpenTeam2}
+                onClose={modalClose}
+                players={team2Players}
+              />
+              <button type="submit" onClick={goalTeam2}>
                 Gol do {teams.team2} <GiSoccerBall />
               </button>
               <h3>{teams.team2}</h3>
