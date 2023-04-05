@@ -5,11 +5,11 @@ import { GiSoccerBall } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Header from '../../components/Header/Header';
-import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import axios from '../../services/axios';
 import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
+import ModalGoal from '../../components/ModalGoal/ModalGoal';
 
 const MySwal = withReactContent(Swal);
 
@@ -21,6 +21,7 @@ function CurrentMatch() {
   const [team1Players, setTeam1Players] = useState([]);
   const [team2Players, setTeam2Players] = useState([]);
   const [scoreboard, setScoreboard] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const getMatch = async () => {
@@ -45,7 +46,9 @@ function CurrentMatch() {
     getPlayers();
   }, [match]);
 
-  const goalTeam1 = async () => {};
+  const goalTeam1 = async () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -71,6 +74,7 @@ function CurrentMatch() {
 
           <div className="team-goals">
             <div className="teamMatch-1">
+              <ModalGoal isOpen={isModalOpen} />
               <button type="submit" onClick={goalTeam1}>
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
