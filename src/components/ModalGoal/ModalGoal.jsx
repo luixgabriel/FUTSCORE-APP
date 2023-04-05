@@ -5,7 +5,7 @@ import './ModalGoal.css';
 import PropTypes from 'prop-types';
 import Goal from '../../assets/imgs/goal.png';
 
-function ModalGoal({ isOpen, players }) {
+function ModalGoal({ isOpen, onClose, players }) {
   if (isOpen) {
     return (
       <div className="modal-overlay">
@@ -34,7 +34,9 @@ function ModalGoal({ isOpen, players }) {
           </div>
           <div className="modal-buttons">
             <button type="submit">Confirmar</button>
-            <button type="submit">Cancelar</button>
+            <button type="submit" onClick={onClose}>
+              Cancelar
+            </button>
           </div>
         </div>
       </div>
@@ -44,6 +46,7 @@ function ModalGoal({ isOpen, players }) {
 
 ModalGoal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.bool.isRequired,
   players: PropTypes.arrayOf.isRequired,
 };
 

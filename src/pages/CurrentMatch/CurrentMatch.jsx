@@ -47,7 +47,11 @@ function CurrentMatch() {
   }, [match]);
 
   const goalTeam1 = async () => {
-    setIsModalOpen(true);
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const modalClose = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -74,7 +78,7 @@ function CurrentMatch() {
 
           <div className="team-goals">
             <div className="teamMatch-1">
-              <ModalGoal isOpen={isModalOpen} />
+              <ModalGoal isOpen={isModalOpen} onClose={modalClose} />
               <button type="submit" onClick={goalTeam1}>
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
