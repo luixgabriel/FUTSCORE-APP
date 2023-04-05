@@ -85,6 +85,8 @@ function CurrentMatch() {
           <div className="team-goals">
             <div className="teamMatch-1">
               <ModalGoal
+                id={match._id}
+                team={teams.team1}
                 isOpen={modalOpenTeam1}
                 onClose={modalClose}
                 players={team1Players}
@@ -119,6 +121,8 @@ function CurrentMatch() {
             />
             <div className="teamMatch-2">
               <ModalGoal
+                id={match._id}
+                team={teams.team2}
                 isOpen={modalOpenTeam2}
                 onClose={modalClose}
                 players={team2Players}

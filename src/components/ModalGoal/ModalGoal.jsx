@@ -1,14 +1,39 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import './ModalGoal.css';
 import PropTypes from 'prop-types';
 import Goal from '../../assets/imgs/goal.png';
+import 'animate.css';
+import axios from '../../services/axios';
 
-function ModalGoal({ isOpen, onClose, players }) {
+function ModalGoal({ id, team, isOpen, onClose, players }) {
+  const [strikerTeam, setStrikerTeam] = useState('');
+  const [assistTeam, setAssistTeam] = useState('');
+
+  // console.log(strikerTeam);
+  // console.log(assistTeam);
+  // console.log(players[0].team);
+  // if (players) {
+  //   setTeam(players[0].team);
+  // }
+
+  const goal = async () => {
+    console.log(id);
+    const response = await axios.put(`match/current/${id}`, {
+      team,
+      goals: strikerTeam,
+      assists: assistTeam,
+    });
+    setStrikerTeam('');
+    setAssistTeam('');
+
+    console.log(response);
+  };
+
   if (isOpen) {
     return (
-      <div className="modal-overlay">
+      <div className="modal-overlay animate__animated animate__fadeIn animate__fast">
         <div className="modal">
           <div className="modal-header">
             <img src={Goal} alt="gol" />
@@ -16,23 +41,29 @@ function ModalGoal({ isOpen, onClose, players }) {
           </div>
           <div className="modal-body">
             <h4>AUTOR DO GOL</h4>
-            <select>
+            <select onChange={(e) => setStrikerTeam(e.target.value)}>
               <option />
               {players.map((p) => (
-                <option key={p._id}>{p.name}</option>
+                <option key={p._id} value={p.name}>
+                  {p.name}
+                </option>
               ))}
             </select>
             <h4>AUTOR DA ASSISTÊNCIA</h4>
-            <select>
+            <select onChange={(e) => setAssistTeam(e.target.value)}>
               <option />
-              <option>Sem assistência</option>
+              <option value={assistTeam}>Sem assistência</option>
               {players.map((p) => (
-                <option key={p._id}>{p.name}</option>
+                <option key={p._id} value={p.name}>
+                  {p.name}
+                </option>
               ))}
             </select>
           </div>
           <div className="modal-buttons">
-            <button type="submit">Confirmar</button>
+            <button type="submit" onClick={goal}>
+              Confirmar
+            </button>
             <button type="submit" onClick={onClose}>
               Cancelar
             </button>
@@ -44,6 +75,8 @@ function ModalGoal({ isOpen, onClose, players }) {
 }
 
 ModalGoal.propTypes = {
+  id: PropTypes.string.isRequired,
+  team: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.bool.isRequired,
   players: PropTypes.arrayOf.isRequired,
