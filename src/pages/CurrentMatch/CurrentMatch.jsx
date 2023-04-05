@@ -17,32 +17,33 @@ function CurrentMatch() {
   const { id } = useParams();
   const [players, setPlayers] = useState('');
   const [match, setMatch] = useState('');
-  const [team1, setTeam1] = useState('');
-
-  console.log(id);
+  const [teams, setTeams] = useState('');
+  const [team1Players, setTeam1Players] = useState([]);
+  const [team2Players, setTeam2Players] = useState([]);
+  const [scoreboard, setScoreboard] = useState({});
 
   useEffect(() => {
     const getMatch = async () => {
       const response = await axios.get(`match/searchmatch/${id}`);
       setMatch(response.data);
-      setTeam1(response.data.teams.team1);
+      setTeams(response.data.teams);
+      setScoreboard(response.data.scoreboard);
     };
     getMatch();
   }, []);
 
-  // useEffect(() => {
-  //   const getPlayers = async () => {
-  //     const response = await axios.get('/player/showPlayers');
-  //     setPlayers(response.data);
-  //     const playersTeam1 = players.filter(
-  //       (player) => player.team === match.teams.team1
-  //     );
-  //   };
+  useEffect(() => {
+    const getPlayers = async () => {
+      const response = await axios.get('/player/showPlayers');
+      setPlayers(response.data);
+      if (players) {
+        setTeam1Players(players.filter((p) => p.team === teams.team1));
+        setTeam2Players(players.filter((p) => p.team === teams.team2));
+      }
+    };
 
-  //   getPlayers();
-  // }, [match]);
-
-  // const { team1 } = match.teams;
+    getPlayers();
+  }, [match]);
 
   const goalTeam1 = async () => {};
 
@@ -52,57 +53,45 @@ function CurrentMatch() {
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
-            <p>{match._id}</p>
-
-            <h1>{team1}</h1>
-            <h1>X</h1>
-            <h1>vasco</h1>
+            <h1>{teams.team1}</h1>
+            <h1>x</h1>
+            <h1>{teams.team2}</h1>
           </div>
 
           <div className="scoreboard">
             <h2>Placar:</h2>
-            <h2>2</h2>
+            <h2>{scoreboard.team1Goals}</h2>
             <h2>x</h2>
-            <h2>3</h2>
+            <h2>{scoreboard.team2Goals}</h2>
           </div>
           <div className="time">
             <h2>Tempo:</h2>
-            <h2>30:00</h2>
+            <h2>{match.duration}</h2>
           </div>
 
           <div className="team-goals">
             <div className="teamMatch-1">
               <button type="submit" onClick={goalTeam1}>
-                Gol do vasco <GiSoccerBall />
+                Gol do {teams.team1} <GiSoccerBall />
               </button>
-              <h3>VASCO</h3>
+              <h3>{teams.team1}</h3>
               <table className="players-team">
-                <tr>
-                  <th>
-                    <img src={Shirt} alt="CamisaTime" />
-                  </th>
-                  <th>jogadores</th>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>
+                      <img src={Shirt} alt="CamisaTime" />
+                    </th>
+                    <th>jogadores</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {team1Players.map((t1Player) => (
+                    <tr key={t1Player._id}>
+                      <td>{t1Player.numberTshirt}</td>
+                      <td>{t1Player.name}</td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
             <img
@@ -112,36 +101,26 @@ function CurrentMatch() {
             />
             <div className="teamMatch-2">
               <button type="submit">
-                Gol do vasco <GiSoccerBall />
+                Gol do {teams.team2} <GiSoccerBall />
               </button>
-              <h3>VASCO</h3>
+              <h3>{teams.team2}</h3>
               <table className="players-team">
-                <tr>
-                  <th>
-                    <img src={Shirt} alt="CamisaTime" />
-                  </th>
-                  <th>jogadores</th>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>luis</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>
+                      <img src={Shirt} alt="CamisaTime" />
+                    </th>
+                    <th>jogadores</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {team2Players.map((t2Player) => (
+                    <tr key={t2Player._id}>
+                      <td>{t2Player.numberTshirt}</td>
+                      <td>{t2Player.name}</td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

@@ -78,7 +78,7 @@ function Match() {
       times,
     });
     setMatch(data);
-    navigate('/listaPartidas');
+    navigate('/partidas');
   };
 
   return (

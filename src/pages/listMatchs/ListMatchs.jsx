@@ -25,7 +25,9 @@ function ListMatchs() {
     <>
       <Header />
       <div className="listMatch-button">
-        <button type="submit">Criar nova partida</button>
+        <button type="submit">
+          <Link to="/criarPartida">Criar nova partida</Link>
+        </button>
       </div>
 
       <div className="listMatchs-main">
