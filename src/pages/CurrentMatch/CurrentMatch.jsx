@@ -67,21 +67,25 @@ function CurrentMatch() {
         <div className="currentMatch-section">
           <div className="title-teams">
             <h1>{teams.team1}</h1>
-            <h1>x</h1>
+            <div className="x">
+              <h2>x</h2>
+            </div>
+
             <h1>{teams.team2}</h1>
           </div>
-
           <div className="scoreboard">
             <h2>Placar:</h2>
-            <h2>{scoreboard.team1Goals}</h2>
+            <h3>{scoreboard.team1Goals}</h3>
             <h2>x</h2>
-            <h2>{scoreboard.team2Goals}</h2>
+            <h3>{scoreboard.team2Goals}</h3>
           </div>
           <div className="time">
             <h2>Tempo:</h2>
             <h2>{match.duration}</h2>
           </div>
-
+          <div className="btnStart">
+            <button type="submit">Iniciar partida</button>
+          </div>
           <div className="team-goals">
             <div className="teamMatch-1">
               <ModalGoal

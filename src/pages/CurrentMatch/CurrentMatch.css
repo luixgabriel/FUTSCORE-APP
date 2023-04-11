@@ -14,7 +14,8 @@
 .team-goals{
   display: flex;
   gap: 100px;
-  margin-top: 30px;
+  margin-top: 40px;
+  background-color: aquamarine;
 
 }
 .team-goals h3 {
@@ -33,16 +34,39 @@
   gap: 8px;
 }
 
+.title-teams h1 {
+  font-family: soccerleague;
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.title-teams .x {
+
+background-color: aqua;
+
+}
+
 .scoreboard{
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
+  font-family: scoreboard;
+
+}
+
+.scoreboard h3 {
+  font-size: 1.5rem;
+  color: red;
 }
 
 .time{
   display: flex;
   justify-content: center;
   gap: 8px;
+}
+
+.btnStart {
+  background-color: greenyellow;
 }
 
 .players-team th {

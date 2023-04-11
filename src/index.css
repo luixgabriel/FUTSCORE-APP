@@ -3,6 +3,16 @@
   src: url('../src/assets/fonts/JumpoffDemoRegular.ttf');
 }
 
+@font-face {
+  font-family: Scoreboard;
+  src: url('../src/assets/fonts/SoccerScoreboard.otf');
+}
+
+@font-face {
+  font-family: SoccerLeague;
+  src: url('../src/assets/fonts/SoccerLeague.ttf');
+}
+
 :root {
   --primaryColor: #ebedf0;
 
