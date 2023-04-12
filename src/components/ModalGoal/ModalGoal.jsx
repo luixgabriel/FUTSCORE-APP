@@ -11,13 +11,6 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
   const [strikerTeam, setStrikerTeam] = useState('');
   const [assistTeam, setAssistTeam] = useState('');
 
-  // console.log(strikerTeam);
-  // console.log(assistTeam);
-  // console.log(players[0].team);
-  // if (players) {
-  //   setTeam(players[0].team);
-  // }
-
   const goal = async () => {
     console.log(id);
     const response = await axios.put(`match/current/${id}`, {

@@ -10,6 +10,7 @@ import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import ModalGoal from '../../components/ModalGoal/ModalGoal';
+import Timer from '../../components/Timer/Timer';
 
 const MySwal = withReactContent(Swal);
 
@@ -63,6 +64,7 @@ function CurrentMatch() {
   return (
     <>
       <Header />
+      <Timer duration="20" />
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
@@ -70,7 +72,6 @@ function CurrentMatch() {
             <div className="x">
               <h2>x</h2>
             </div>
-
             <h1>{teams.team2}</h1>
           </div>
           <div className="scoreboard">
@@ -79,10 +80,10 @@ function CurrentMatch() {
             <h2>x</h2>
             <h3>{scoreboard.team2Goals}</h3>
           </div>
-          <div className="time">
+          {/* <div className="time">
             <h2>Tempo:</h2>
             <h2>{match.duration}</h2>
-          </div>
+          </div> */}
           <div className="btnStart">
             <button type="submit">Iniciar partida</button>
           </div>
