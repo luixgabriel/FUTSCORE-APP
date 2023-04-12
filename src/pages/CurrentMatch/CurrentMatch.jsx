@@ -22,6 +22,7 @@ function CurrentMatch() {
   const [team1Players, setTeam1Players] = useState([]);
   const [team2Players, setTeam2Players] = useState([]);
   const [scoreboard, setScoreboard] = useState({});
+  const [durationGame, setDurationGame] = useState(0);
   const [modalOpenTeam1, setModalOpenTeam1] = useState(false);
   const [modalOpenTeam2, setModalOpenTeam2] = useState(false);
 
@@ -31,6 +32,7 @@ function CurrentMatch() {
       setMatch(response.data);
       setTeams(response.data.teams);
       setScoreboard(response.data.scoreboard);
+      setDurationGame(response.data.duration * 60);
     };
     getMatch();
   }, []);
@@ -64,7 +66,7 @@ function CurrentMatch() {
   return (
     <>
       <Header />
-      <Timer duration="20" />
+
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
@@ -80,10 +82,13 @@ function CurrentMatch() {
             <h2>x</h2>
             <h3>{scoreboard.team2Goals}</h3>
           </div>
-          {/* <div className="time">
-            <h2>Tempo:</h2>
-            <h2>{match.duration}</h2>
-          </div> */}
+          <div className="time">
+            {durationGame > 0 ? (
+              <Timer duration={durationGame} />
+            ) : (
+              <p>CARREGANDO</p>
+            )}
+          </div>
           <div className="btnStart">
             <button type="submit">Iniciar partida</button>
           </div>
