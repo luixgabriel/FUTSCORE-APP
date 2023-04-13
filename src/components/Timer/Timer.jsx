@@ -8,23 +8,21 @@ function Timer({ duration }) {
     const intervalId = setInterval(() => {
       if (remainingSeconds > 0) {
         setRemainingSeconds(remainingSeconds - 1);
-      } else {
-        clearInterval(intervalId);
       }
     }, 1000);
-
-    console.log(intervalId);
 
     return () => clearInterval(intervalId);
   }, [remainingSeconds, duration]);
 
+  console.log(remainingSeconds);
   const minutes = Math.floor(remainingSeconds / 60);
   const seconds = remainingSeconds % 60;
 
   return (
     <>
-      <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-      <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+      <h2>{minutes < 10 ? `0${minutes}` : minutes}</h2>
+      <h2>:</h2>
+      <h2>{seconds < 10 ? `0${seconds}` : seconds}</h2>
     </>
   );
 }
