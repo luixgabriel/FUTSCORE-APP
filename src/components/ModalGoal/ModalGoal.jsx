@@ -12,7 +12,6 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
   const [assistTeam, setAssistTeam] = useState('');
 
   const goal = async () => {
-    console.log(id);
     const response = await axios.put(`match/current/${id}`, {
       team,
       goals: strikerTeam,
@@ -20,13 +19,11 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
     });
     setStrikerTeam('');
     setAssistTeam('');
-
-    console.log(response);
   };
 
   if (isOpen) {
     return (
-      <div className="modal-overlay animate__animated animate__fadeIn animate__fast">
+      <div className="modal-overlay animate__animated animate__fadeIn animate__faster">
         <div className="modal">
           <div className="modal-header">
             <img src={Goal} alt="gol" />
@@ -54,12 +51,14 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
             </select>
           </div>
           <div className="modal-buttons">
-            <button type="submit" onClick={goal}>
-              Confirmar
-            </button>
-            <button type="submit" onClick={onClose}>
-              Cancelar
-            </button>
+            <form onSubmit={onClose}>
+              <button type="submit" onClick={goal}>
+                Confirmar
+              </button>
+              <button type="submit" onClick={onClose}>
+                Cancelar
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -15,8 +15,6 @@
   display: flex;
   gap: 100px;
   margin-top: 20px;
-  background-color: aquamarine;
-
 }
 .team-goals h3 {
   text-align: center;
@@ -69,6 +67,7 @@ font-size: 2rem;
   display: flex;
   justify-content: center;
   gap: 8px;
+  margin-top: 15px;
 }
 
 .btnStart {

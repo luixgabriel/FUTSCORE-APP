@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
 import Swal from 'sweetalert2';
@@ -21,18 +21,23 @@ function CurrentMatch() {
   const [teams, setTeams] = useState('');
   const [team1Players, setTeam1Players] = useState([]);
   const [team2Players, setTeam2Players] = useState([]);
-  const [scoreboard, setScoreboard] = useState({});
   const [durationGame, setDurationGame] = useState(0);
+  const [matchTime, setMatchTime] = useState(0);
   const [modalOpenTeam1, setModalOpenTeam1] = useState(false);
   const [modalOpenTeam2, setModalOpenTeam2] = useState(false);
+  const [goalT1, setGoalT1] = useState(0);
+  const [goalT2, setGoalT2] = useState(0);
+  const [startTimer, setStartTimer] = useState(false);
 
   useEffect(() => {
     const getMatch = async () => {
       const response = await axios.get(`match/searchmatch/${id}`);
       setMatch(response.data);
       setTeams(response.data.teams);
-      setScoreboard(response.data.scoreboard);
       setDurationGame(response.data.duration * 60);
+      setMatchTime(response.data.times);
+      setGoalT1(response.data.scoreboard.team1Goals);
+      setGoalT2(response.data.scoreboard.team2Goals);
     };
     getMatch();
   }, []);
@@ -50,17 +55,26 @@ function CurrentMatch() {
     getPlayers();
   }, [match]);
 
+  console.log(matchTime);
+
   const goalTeam1 = async () => {
     setModalOpenTeam1(!modalOpenTeam1);
+    setGoalT1(goalT1 + 1);
   };
 
   const goalTeam2 = async () => {
     setModalOpenTeam2(!modalOpenTeam2);
+    setGoalT2(goalT2 + 1);
   };
 
-  const modalClose = () => {
+  const modalClose = (e) => {
+    e.preventDefault();
     setModalOpenTeam1(false);
     setModalOpenTeam2(false);
+  };
+
+  const startingMatch = () => {
+    setStartTimer(!startTimer);
   };
 
   return (
@@ -78,20 +92,25 @@ function CurrentMatch() {
           </div>
           <div className="scoreboard">
             <h2>Placar:</h2>
-            <h3>{scoreboard.team1Goals}</h3>
+            <h3>{goalT1}</h3>
             <h2>x</h2>
-            <h3>{scoreboard.team2Goals}</h3>
+            <h3>{goalT2}</h3>
           </div>
-          <div className="time">
-            {durationGame > 0 ? (
-              <Timer duration={durationGame} />
-            ) : (
-              <p>CARREGANDO</p>
-            )}
-          </div>
-          <div className="btnStart">
-            <button type="submit">Iniciar partida</button>
-          </div>
+          {startTimer === true ? (
+            <div className="time">
+              {durationGame > 0 ? (
+                <Timer duration={durationGame} matchTime={matchTime} />
+              ) : (
+                <p>CARREGANDO</p>
+              )}
+            </div>
+          ) : (
+            <div className="btnStart">
+              <button type="submit" onClick={startingMatch}>
+                Iniciar partida
+              </button>
+            </div>
+          )}
           <div className="team-goals">
             <div className="teamMatch-1">
               <ModalGoal
