@@ -22,7 +22,7 @@ function CurrentMatch() {
   const [team1Players, setTeam1Players] = useState([]);
   const [team2Players, setTeam2Players] = useState([]);
   const [durationGame, setDurationGame] = useState(0);
-  const [matchTime, setMatchTime] = useState(0);
+  const [secondHalf, setSecondHalf] = useState(false);
   const [modalOpenTeam1, setModalOpenTeam1] = useState(false);
   const [modalOpenTeam2, setModalOpenTeam2] = useState(false);
   const [goalT1, setGoalT1] = useState(0);
@@ -73,22 +73,24 @@ function CurrentMatch() {
 
   const startingMatch = () => {
     setStartTimer(!startTimer);
+    if (match.times > 1) {
+      setSecondHalf(true);
+    } else {
+      setFinishingMatch(true);
+    }
   };
 
   const handleTimeUp = () => {
-    setMatchTime(match.times);
-    setFinishingMatch(true);
     setStartTimer(!startTimer);
   };
 
-  let btnText;
-  if (matchTime > 1) {
-    btnText = 'Iniciar Segundo Tempo';
-  } else if (finishingMatch) {
-    btnText = 'Finalizar Partida';
-  } else {
-    btnText = 'Iniciar Partida';
-  }
+  const finishMatch = () => {
+    setStartTimer(!startTimer);
+    setSecondHalf(false);
+    setFinishingMatch(true);
+  };
+
+  console.log(finishingMatch);
 
   return (
     <>
@@ -119,10 +121,18 @@ function CurrentMatch() {
             </div>
           ) : (
             <div className="btnStart">
-              <button type="submit" onClick={startingMatch}>
-                {btnText}
-                {/* {matchTime > 1 ? 'Iniciar Segundo tempo' : 'Iniciar Partida'} */}
-              </button>
+              {finishingMatch === true ? (
+                <button type="submit">Finalizar Partida</button>
+              ) : (
+                <button
+                  type="submit"
+                  onClick={secondHalf === true ? finishMatch : startingMatch}
+                >
+                  {secondHalf === true
+                    ? 'Iniciar Segundo Tempo'
+                    : 'Iniciar Partida'}
+                </button>
+              )}
             </div>
           )}
           <div className="team-goals">
