@@ -77,8 +77,18 @@ function CurrentMatch() {
 
   const handleTimeUp = () => {
     setMatchTime(match.times);
+    setFinishingMatch(true);
     setStartTimer(!startTimer);
   };
+
+  let btnText;
+  if (matchTime > 1) {
+    btnText = 'Iniciar Segundo Tempo';
+  } else if (finishingMatch) {
+    btnText = 'Finalizar Partida';
+  } else {
+    btnText = 'Iniciar Partida';
+  }
 
   return (
     <>
@@ -99,15 +109,6 @@ function CurrentMatch() {
             <h2>x</h2>
             <h3>{goalT2}</h3>
           </div>
-          {finishingMatch ? (
-            <div>
-              <h1>oi</h1>
-            </div>
-          ) : (
-            <div>
-              <h1>FodASE</h1>
-            </div>
-          )}
           {startTimer === true ? (
             <div className="time">
               {durationGame > 0 ? (
@@ -119,7 +120,8 @@ function CurrentMatch() {
           ) : (
             <div className="btnStart">
               <button type="submit" onClick={startingMatch}>
-                {matchTime > 1 ? 'Iniciar Segundo tempo' : 'Iniciar Partida'}
+                {btnText}
+                {/* {matchTime > 1 ? 'Iniciar Segundo tempo' : 'Iniciar Partida'} */}
               </button>
             </div>
           )}
