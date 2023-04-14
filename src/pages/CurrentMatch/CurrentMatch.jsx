@@ -28,6 +28,7 @@ function CurrentMatch() {
   const [goalT1, setGoalT1] = useState(0);
   const [goalT2, setGoalT2] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
+  const [finishingMatch, setFinishingMatch] = useState(false);
 
   useEffect(() => {
     const getMatch = async () => {
@@ -35,7 +36,6 @@ function CurrentMatch() {
       setMatch(response.data);
       setTeams(response.data.teams);
       setDurationGame(response.data.duration * 60);
-      setMatchTime(response.data.times);
       setGoalT1(response.data.scoreboard.team1Goals);
       setGoalT2(response.data.scoreboard.team2Goals);
     };
@@ -55,8 +55,6 @@ function CurrentMatch() {
     getPlayers();
   }, [match]);
 
-  console.log(matchTime);
-
   const goalTeam1 = async () => {
     setModalOpenTeam1(!modalOpenTeam1);
     setGoalT1(goalT1 + 1);
@@ -74,6 +72,11 @@ function CurrentMatch() {
   };
 
   const startingMatch = () => {
+    setStartTimer(!startTimer);
+  };
+
+  const handleTimeUp = () => {
+    setMatchTime(match.times);
     setStartTimer(!startTimer);
   };
 
@@ -96,10 +99,19 @@ function CurrentMatch() {
             <h2>x</h2>
             <h3>{goalT2}</h3>
           </div>
+          {finishingMatch ? (
+            <div>
+              <h1>oi</h1>
+            </div>
+          ) : (
+            <div>
+              <h1>FodASE</h1>
+            </div>
+          )}
           {startTimer === true ? (
             <div className="time">
               {durationGame > 0 ? (
-                <Timer duration={durationGame} matchTime={matchTime} />
+                <Timer duration={durationGame} onTimeUp={handleTimeUp} />
               ) : (
                 <p>CARREGANDO</p>
               )}
@@ -107,7 +119,7 @@ function CurrentMatch() {
           ) : (
             <div className="btnStart">
               <button type="submit" onClick={startingMatch}>
-                Iniciar partida
+                {matchTime > 1 ? 'Iniciar Segundo tempo' : 'Iniciar Partida'}
               </button>
             </div>
           )}
