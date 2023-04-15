@@ -1,15 +1,30 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ModalGoal.css';
 import PropTypes from 'prop-types';
 import Goal from '../../assets/imgs/goal.png';
 import 'animate.css';
 import axios from '../../services/axios';
 
-function ModalGoal({ id, team, isOpen, onClose, players }) {
+function ModalGoal({ id, team, isOpen, onClose }) {
   const [strikerTeam, setStrikerTeam] = useState('');
   const [assistTeam, setAssistTeam] = useState('');
+  const [players, setPlayers] = useState([]);
+  const [teamPlayers, setTeamPlayers] = useState([]);
+
+  useEffect(() => {
+    const getPlayers = async () => {
+      const response = await axios.get('/player/showPlayers');
+      setPlayers(response.data);
+    };
+
+    getPlayers();
+  }, []);
+
+  useEffect(() => {
+    setTeamPlayers(players.filter((p) => p.team === team));
+  }, [players]);
 
   const goal = async () => {
     const response = await axios.put(`match/current/${id}`, {
@@ -33,7 +48,7 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
             <h4>AUTOR DO GOL</h4>
             <select onChange={(e) => setStrikerTeam(e.target.value)}>
               <option />
-              {players.map((p) => (
+              {teamPlayers.map((p) => (
                 <option key={p._id} value={p.name}>
                   {p.name}
                 </option>
@@ -43,7 +58,7 @@ function ModalGoal({ id, team, isOpen, onClose, players }) {
             <select onChange={(e) => setAssistTeam(e.target.value)}>
               <option />
               <option value={assistTeam}>Sem assistência</option>
-              {players.map((p) => (
+              {teamPlayers.map((p) => (
                 <option key={p._id} value={p.name}>
                   {p.name}
                 </option>
@@ -71,7 +86,6 @@ ModalGoal.propTypes = {
   team: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.bool.isRequired,
-  players: PropTypes.arrayOf.isRequired,
 };
 
 export default ModalGoal;

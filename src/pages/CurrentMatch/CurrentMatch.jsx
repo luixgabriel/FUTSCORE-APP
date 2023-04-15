@@ -11,16 +11,14 @@ import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import Timer from '../../components/Timer/Timer';
+import LineUp from '../../components/LineUp/LineUp';
 
 const MySwal = withReactContent(Swal);
 
 function CurrentMatch() {
   const { id } = useParams();
-  const [players, setPlayers] = useState('');
   const [match, setMatch] = useState('');
   const [teams, setTeams] = useState('');
-  const [team1Players, setTeam1Players] = useState([]);
-  const [team2Players, setTeam2Players] = useState([]);
   const [durationGame, setDurationGame] = useState(0);
   const [secondHalf, setSecondHalf] = useState(false);
   const [modalOpenTeam1, setModalOpenTeam1] = useState(false);
@@ -41,19 +39,6 @@ function CurrentMatch() {
     };
     getMatch();
   }, []);
-
-  useEffect(() => {
-    const getPlayers = async () => {
-      const response = await axios.get('/player/showPlayers');
-      setPlayers(response.data);
-      if (players) {
-        setTeam1Players(players.filter((p) => p.team === teams.team1));
-        setTeam2Players(players.filter((p) => p.team === teams.team2));
-      }
-    };
-
-    getPlayers();
-  }, [match]);
 
   const goalTeam1 = async () => {
     setModalOpenTeam1(!modalOpenTeam1);
@@ -84,13 +69,24 @@ function CurrentMatch() {
     setStartTimer(!startTimer);
   };
 
-  const finishMatch = () => {
+  const startingSecondHalf = () => {
     setStartTimer(!startTimer);
     setSecondHalf(false);
     setFinishingMatch(true);
   };
 
-  console.log(finishingMatch);
+  const finishMatch = () => {
+    let winner;
+    let defeated;
+    console.log(match);
+    if (goalT1 > goalT2) {
+      winner = match.teams.team1;
+      defeated = match.teams.team2;
+    } else {
+      winner = match.teams.team2;
+      defeated = match.teams.team1;
+    }
+  };
 
   return (
     <>
@@ -122,11 +118,15 @@ function CurrentMatch() {
           ) : (
             <div className="btnStart">
               {finishingMatch === true ? (
-                <button type="submit">Finalizar Partida</button>
+                <button type="submit" onClick={finishMatch}>
+                  Finalizar Partida
+                </button>
               ) : (
                 <button
                   type="submit"
-                  onClick={secondHalf === true ? finishMatch : startingMatch}
+                  onClick={
+                    secondHalf === true ? startingSecondHalf : startingMatch
+                  }
                 >
                   {secondHalf === true
                     ? 'Iniciar Segundo Tempo'
@@ -142,30 +142,12 @@ function CurrentMatch() {
                 team={teams.team1}
                 isOpen={modalOpenTeam1}
                 onClose={modalClose}
-                players={team1Players}
               />
               <button type="submit" onClick={goalTeam1}>
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
               <h3>{teams.team1}</h3>
-              <table className="players-team">
-                <thead>
-                  <tr>
-                    <th>
-                      <img src={Shirt} alt="CamisaTime" />
-                    </th>
-                    <th>jogadores</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {team1Players.map((t1Player) => (
-                    <tr key={t1Player._id}>
-                      <td>{t1Player.numberTshirt}</td>
-                      <td>{t1Player.name}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {teams ? <LineUp team={teams.team1} /> : <p>CARREGANDO</p>}
             </div>
             <img
               src={soccerField}
@@ -178,30 +160,12 @@ function CurrentMatch() {
                 team={teams.team2}
                 isOpen={modalOpenTeam2}
                 onClose={modalClose}
-                players={team2Players}
               />
               <button type="submit" onClick={goalTeam2}>
                 Gol do {teams.team2} <GiSoccerBall />
               </button>
               <h3>{teams.team2}</h3>
-              <table className="players-team">
-                <thead>
-                  <tr>
-                    <th>
-                      <img src={Shirt} alt="CamisaTime" />
-                    </th>
-                    <th>jogadores</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {team2Players.map((t2Player) => (
-                    <tr key={t2Player._id}>
-                      <td>{t2Player.numberTshirt}</td>
-                      <td>{t2Player.name}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {teams ? <LineUp team={teams.team2} /> : <p>CARREGANDO</p>}
             </div>
           </div>
         </div>
