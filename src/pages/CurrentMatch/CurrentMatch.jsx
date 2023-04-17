@@ -92,7 +92,7 @@ function CurrentMatch() {
   return (
     <>
       <Header />
-      <Loading />
+
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
@@ -113,7 +113,7 @@ function CurrentMatch() {
               {durationGame > 0 ? (
                 <Timer duration={durationGame} onTimeUp={handleTimeUp} />
               ) : (
-                <p>CARREGANDO</p>
+                <Loading />
               )}
             </div>
           ) : (
@@ -148,7 +148,7 @@ function CurrentMatch() {
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
               <h3>{teams.team1}</h3>
-              {teams ? <LineUp team={teams.team1} /> : <p>CARREGANDO</p>}
+              {teams ? <LineUp team={teams.team1} /> : <Loading />}
             </div>
             <img
               src={soccerField}
@@ -166,7 +166,7 @@ function CurrentMatch() {
                 Gol do {teams.team2} <GiSoccerBall />
               </button>
               <h3>{teams.team2}</h3>
-              {teams ? <LineUp team={teams.team2} /> : <p>CARREGANDO</p>}
+              {teams ? <LineUp team={teams.team2} /> : <Loading />}
             </div>
           </div>
         </div>

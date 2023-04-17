@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import noShield from '../../assets/imgs/no-shield.png';
+import Loading from '../../components/Loading/Loading';
 import './Team.css';
 import axios from '../../services/axios';
 
@@ -17,6 +18,12 @@ function Teams() {
 
     getTeams();
   }, []);
+
+  console.log(teams.length);
+
+  if (teams.length <= 0) {
+    return <Loading />;
+  }
 
   return (
     <>
