@@ -27,20 +27,32 @@
   color: rgb(236, 74, 74);
   margin: 5px 0;
 }
+.results {
 
+  width: 80%;
+}
 .game {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .game h4{
   font-size: 1.8rem;
-
+  width: 30%;
+  text-align: center;
 }
 
 .game span{
   font-size: 1.8rem;
   font-weight: bold;
+}
+
+.scoreboard-finished {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
 }
 

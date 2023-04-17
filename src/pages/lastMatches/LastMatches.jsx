@@ -1,54 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from '../../services/axios';
+import Loading from '../../components/Loading/Loading';
 import './LastMatches.css';
 
 function LastMatches() {
+  const [finishedMatches, setFinishedMatches] = useState([]);
+
+  useEffect(() => {
+    const getMatches = async () => {
+      const matchesAPI = await axios.get('/match/matches');
+      const matches = matchesAPI.data.filter(
+        (match) => match.finished === true
+      );
+      setFinishedMatches(matches);
+    };
+
+    getMatches();
+  }, []);
+
+  if (finishedMatches.length <= 0) {
+    return <Loading />;
+  }
   return (
     <div className="lastMatches">
       <h1>Ultimas Partidas</h1>
       <div className="results">
-        <div className="matchCurrent">
-          <p>EM ANDAMENTO</p>
-          <div className="game">
-            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
-            <span>3</span>
-            <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
-            <span>0</span>
-            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
+        {finishedMatches.map((f) => (
+          <div key={f._id} className="matchCurrent">
+            <p style={{ color: 'green' }}>FINALIZADO</p>
+            <div className="game">
+              <h4 style={{ marginRight: '20px' }}>{f.teams.team1}</h4>
+              <div className="scoreboard-finished">
+                <span>{f.scoreboard.team1Goals}</span>
+                <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
+                <span>{f.scoreboard.team2Goals}</span>
+              </div>
+              <h4 style={{ marginLeft: '20px' }}>{f.teams.team2}</h4>
+            </div>
           </div>
-        </div>
-
-        <div className="matchCurrent">
-          <p>EM ANDAMENTO</p>
-          <div className="game">
-            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
-            <span>3</span>
-            <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
-            <span>0</span>
-            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
-          </div>
-        </div>
-
-        <div className="matchCurrent">
-          <p style={{ color: 'green' }}>FINALIZADO</p>
-          <div className="game">
-            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
-            <span>3</span>
-            <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
-            <span>0</span>
-            <h4 style={{ marginleft: '20px' }}>Vasco</h4>
-          </div>
-        </div>
-
-        <div className="matchCurrent">
-          <p>EM ANDAMENTO</p>
-          <div className="game">
-            <h4 style={{ marginRight: '20px' }}>Arsenal</h4>
-            <span>3</span>
-            <span style={{ color: '#2596be', margin: '0 10px' }}>x</span>
-            <span>0</span>
-            <h4 style={{ marginLeft: '20px' }}>Vasco</h4>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

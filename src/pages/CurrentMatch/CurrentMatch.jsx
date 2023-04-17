@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -28,6 +28,8 @@ function CurrentMatch() {
   const [goalT2, setGoalT2] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
   const [finishingMatch, setFinishingMatch] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getMatch = async () => {
@@ -66,16 +68,57 @@ function CurrentMatch() {
     setFinishingMatch(true);
   };
 
-  const finishMatch = () => {
+  const finishMatch = async () => {
     let winner;
     let defeated;
-    console.log(match);
+    let draw = false;
+
+    if (goalT1 === goalT2) {
+      draw = true;
+      winner = match.teams.team1;
+      defeated = match.teams.team2;
+      const { data } = await axios.put(`match/result/${id}`, {
+        winner,
+        defeated,
+        draw,
+      });
+      MySwal.fire({
+        title: <p>Partida Finalizada!</p>,
+        text: 'A partida empatou.',
+        icon: 'success',
+        timer: 2000,
+      });
+      console.log(data);
+      navigate('/partidas');
+      return;
+    }
     if (goalT1 > goalT2) {
       winner = match.teams.team1;
       defeated = match.teams.team2;
+      const { data } = await axios.put(`match/result/${id}`, {
+        winner,
+        defeated,
+      });
+      MySwal.fire({
+        title: <p>Partida Finalizada!</p>,
+        text: `O time vencerdor foi o ${match.teams.team1}`,
+        icon: 'success',
+        timer: 2000,
+      });
+      navigate('/partidas');
     } else {
       winner = match.teams.team2;
       defeated = match.teams.team1;
+      const { data } = await axios.put(`match/result/${id}`, {
+        winner,
+        defeated,
+      });
+      MySwal.fire({
+        title: <p>Partida Finalizada!</p>,
+        text: `O time vencerdor foi o ${match.teams.team2}`,
+        icon: 'success',
+        timer: 2000,
+      });
     }
   };
 

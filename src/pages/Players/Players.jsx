@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import Shirt from '../../assets/imgs/camisatime.png';
+import Loading from '../../components/Loading/Loading';
 import './Players.css';
 import axios from '../../services/axios';
 
@@ -17,6 +18,11 @@ function Players() {
 
     getPlayers();
   }, []);
+
+  if (players.length <= 0) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Header />
@@ -30,7 +36,6 @@ function Players() {
               </button>
             </Link>
           </div>
-
           <table>
             <tr>
               <th>
@@ -43,7 +48,7 @@ function Players() {
               <th>AÇÕES</th>
             </tr>
             {players.map((player) => (
-              <tr key={player.id}>
+              <tr key={player._id}>
                 <td>{player.numberTshirt}</td>
                 <td>{player.name}</td>
                 <td>{player.team}</td>
