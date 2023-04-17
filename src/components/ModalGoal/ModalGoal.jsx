@@ -82,10 +82,17 @@ function ModalGoal({ id, team, isOpen, onClose }) {
 }
 
 ModalGoal.propTypes = {
-  id: PropTypes.string.isRequired,
-  team: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.bool.isRequired,
+  id: PropTypes.string,
+  team: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+};
+
+ModalGoal.defaultProps = {
+  id: '',
+  team: '',
+  isOpen: false,
+  onClose: '',
 };
 
 export default ModalGoal;

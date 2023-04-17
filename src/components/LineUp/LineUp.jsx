@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Shirt from '../../assets/imgs/camisatime.png';
 import axios from '../../services/axios';
 
@@ -40,5 +41,13 @@ function LineUp({ team }) {
     </table>
   );
 }
+
+LineUp.propTypes = {
+  team: PropTypes.string,
+};
+
+LineUp.defaultProps = {
+  team: '',
+};
 
 export default LineUp;

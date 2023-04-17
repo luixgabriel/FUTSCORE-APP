@@ -41,16 +41,6 @@ function CurrentMatch() {
     getMatch();
   }, []);
 
-  const goalTeam1 = async () => {
-    setModalOpenTeam1(!modalOpenTeam1);
-    setGoalT1(goalT1 + 1);
-  };
-
-  const goalTeam2 = async () => {
-    setModalOpenTeam2(!modalOpenTeam2);
-    setGoalT2(goalT2 + 1);
-  };
-
   const modalClose = (e) => {
     e.preventDefault();
     setModalOpenTeam1(false);
@@ -144,7 +134,13 @@ function CurrentMatch() {
                 isOpen={modalOpenTeam1}
                 onClose={modalClose}
               />
-              <button type="submit" onClick={goalTeam1}>
+              <button
+                type="submit"
+                onClick={() => {
+                  setModalOpenTeam1(!modalOpenTeam1);
+                  setGoalT1(goalT1 + 1);
+                }}
+              >
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
               <h3>{teams.team1}</h3>
@@ -162,7 +158,13 @@ function CurrentMatch() {
                 isOpen={modalOpenTeam2}
                 onClose={modalClose}
               />
-              <button type="submit" onClick={goalTeam2}>
+              <button
+                type="submit"
+                onClick={() => {
+                  setModalOpenTeam2(!modalOpenTeam2);
+                  setGoalT2(goalT2 + 1);
+                }}
+              >
                 Gol do {teams.team2} <GiSoccerBall />
               </button>
               <h3>{teams.team2}</h3>

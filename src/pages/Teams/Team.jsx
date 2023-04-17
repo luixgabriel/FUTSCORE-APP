@@ -19,8 +19,6 @@ function Teams() {
     getTeams();
   }, []);
 
-  console.log(teams.length);
-
   if (teams.length <= 0) {
     return <Loading />;
   }

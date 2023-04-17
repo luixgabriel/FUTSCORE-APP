@@ -33,10 +33,12 @@ function Timer({ duration, onTimeUp }) {
 
 Timer.propTypes = {
   duration: PropTypes.number,
+  onTimeUp: PropTypes.func,
 };
 
 Timer.defaultProps = {
   duration: 0,
+  onTimeUp: '',
 };
 
 export default Timer;
