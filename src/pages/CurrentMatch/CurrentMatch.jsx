@@ -12,6 +12,7 @@ import soccerField from '../../assets/imgs/soccerStadium.png';
 import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import Timer from '../../components/Timer/Timer';
 import LineUp from '../../components/LineUp/LineUp';
+import Loading from '../../components/Loading/Loading';
 
 const MySwal = withReactContent(Swal);
 
@@ -91,7 +92,7 @@ function CurrentMatch() {
   return (
     <>
       <Header />
-
+      <Loading />
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
