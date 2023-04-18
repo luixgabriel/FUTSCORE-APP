@@ -34,9 +34,9 @@ function Header() {
               </Link>
             </li>
             <li className="menu__group">
-              <a href="#0" className="menu__link r-link text-underlined">
-                Tabelas
-              </a>
+              <Link to="/tabelas" className="menu__link r-link text-underlined">
+                tabelas
+              </Link>
             </li>
           </ul>
         </nav>
