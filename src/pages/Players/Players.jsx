@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import Shirt from '../../assets/imgs/camisatime.png';
-import Loading from '../../components/Loading/Loading';
+import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 import './Players.css';
 import axios from '../../services/axios';
 
@@ -19,10 +19,6 @@ function Players() {
     getPlayers();
   }, []);
 
-  if (players.length <= 0) {
-    return <Loading />;
-  }
-
   return (
     <>
       <Header />
@@ -36,6 +32,7 @@ function Players() {
               </button>
             </Link>
           </div>
+
           <table>
             <tr>
               <th>
@@ -66,6 +63,7 @@ function Players() {
               </tr>
             ))}
           </table>
+          {players.length <= 0 && <LoadingTimer />}
         </div>
       </div>
     </>

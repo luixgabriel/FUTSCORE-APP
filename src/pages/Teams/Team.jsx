@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import noShield from '../../assets/imgs/no-shield.png';
-import Loading from '../../components/Loading/Loading';
+import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 import './Team.css';
 import axios from '../../services/axios';
 
@@ -20,9 +20,6 @@ function Teams() {
   }, []);
 
   console.log(teams);
-  if (teams.length <= 0) {
-    return <Loading />;
-  }
 
   return (
     <>
@@ -39,6 +36,7 @@ function Teams() {
           </div>
 
           <div className="teams">
+            {teams.length <= 0 && <LoadingTimer />}
             {teams.map((t) => (
               <div className="list-teams" key={t._id}>
                 <img

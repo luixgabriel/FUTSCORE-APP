@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../services/axios';
-import Loading from '../../components/Loading/Loading';
+import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 import './LastMatches.css';
 
 function LastMatches() {
@@ -18,15 +18,11 @@ function LastMatches() {
     getMatches();
   }, []);
 
-  console.log(finishedMatches);
-
-  if (!finishedMatches && finishedMatches.length <= 0) {
-    return <Loading />;
-  }
   return (
     <div className="lastMatches">
       <h1>Ultimas Partidas</h1>
       <div className="results">
+        {finishedMatches.length <= 0 && <LoadingTimer />}
         {finishedMatches.map((f) => (
           <div key={f._id} className="matchCurrent">
             <p style={{ color: 'green' }}>FINALIZADO</p>
