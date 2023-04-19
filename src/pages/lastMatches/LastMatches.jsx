@@ -18,7 +18,9 @@ function LastMatches() {
     getMatches();
   }, []);
 
-  if (finishedMatches.length <= 0) {
+  console.log(finishedMatches);
+
+  if (!finishedMatches && finishedMatches.length <= 0) {
     return <Loading />;
   }
   return (

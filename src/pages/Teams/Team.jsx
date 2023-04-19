@@ -19,6 +19,7 @@ function Teams() {
     getTeams();
   }, []);
 
+  console.log(teams);
   if (teams.length <= 0) {
     return <Loading />;
   }
@@ -39,7 +40,7 @@ function Teams() {
 
           <div className="teams">
             {teams.map((t) => (
-              <div className="list-teams" key={t.id}>
+              <div className="list-teams" key={t._id}>
                 <img
                   src={t.shield === 'null' ? noShield : t.shield}
                   alt="EscudoTime"

@@ -105,6 +105,7 @@ function CurrentMatch() {
         icon: 'success',
         timer: 2000,
       });
+      console.log(data);
       navigate('/partidas');
     } else {
       winner = match.teams.team2;
