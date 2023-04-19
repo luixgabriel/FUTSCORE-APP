@@ -94,7 +94,7 @@ function Match() {
               <select onChange={(e) => setTeam1(e.target.value)}>
                 <option />
                 {teams.map((team) => (
-                  <option key={team.id} value={team.name}>
+                  <option key={team._id} value={team.name}>
                     {team.name}
                   </option>
                 ))}
@@ -164,7 +164,7 @@ function Match() {
               >
                 <option />
                 {teams.map((team) => (
-                  <option key={team.id} value={team.name}>
+                  <option key={team._id} value={team.name}>
                     {team.name}
                   </option>
                 ))}

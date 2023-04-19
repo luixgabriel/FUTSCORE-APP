@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GiSoccerBall, GiTrashCan } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import Loading from '../../components/Loading/Loading';
+import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 import axios from '../../services/axios';
 import './ListMatchs.css';
 
@@ -21,9 +21,9 @@ function ListMatchs() {
     getMatches();
   }, []);
 
-  if (matchsInProgress.length <= 0) {
-    return <Loading />;
-  }
+  // if (matchsInProgress.length <= 0) {
+  //   return <Loading />;
+  // }
 
   return (
     <>
@@ -45,6 +45,8 @@ function ListMatchs() {
 
             <h2>AÇÕES</h2>
           </div>
+          {matchsInProgress.length <= 0 && <LoadingTimer />}
+
           {matchsInProgress.map((match) => (
             <div key={match._id} className="match-info">
               <div

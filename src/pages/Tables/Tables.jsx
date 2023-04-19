@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../services/axios';
 import './Tables.css';
 import Header from '../../components/Header/Header';
-import Loading from '../../components/Loading/Loading';
 
 function Tables() {
   const [teams, setTeams] = useState([]);
@@ -15,20 +14,14 @@ function Tables() {
     };
     const getPlayers = async () => {
       const response = await axios.get('/player/showPlayers');
-      const teste = response.data.sort(
-        (team1, team2) => team2.wins - team1.wins
-      );
-      setPlayers(teste);
+      setPlayers(response.data);
     };
 
     getTeams();
     getPlayers();
   }, []);
 
-  if (teams.length <= 0) {
-    return <Loading />;
-  }
-
+  console.log(players);
   console.log(teams);
 
   return (

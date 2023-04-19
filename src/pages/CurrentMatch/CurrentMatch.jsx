@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-return */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -28,6 +29,8 @@ function CurrentMatch() {
   const [goalT2, setGoalT2] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
   const [finishingMatch, setFinishingMatch] = useState(false);
+  const [winner, setWinner] = useState('');
+  const [defeated, setDefeated] = useState('');
 
   const navigate = useNavigate();
 
@@ -69,58 +72,25 @@ function CurrentMatch() {
   };
 
   const finishMatch = async () => {
-    let winner;
-    let defeated;
-    let draw = false;
-
-    if (goalT1 === goalT2) {
-      draw = true;
-      winner = match.teams.team1;
-      defeated = match.teams.team2;
-      const { data } = await axios.put(`match/result/${id}`, {
-        winner,
-        defeated,
-        draw,
-      });
-      MySwal.fire({
-        title: <p>Partida Finalizada!</p>,
-        text: 'A partida empatou.',
-        icon: 'success',
-        timer: 2000,
-      });
-      console.log(data);
-      navigate('/partidas');
-      return;
-    }
-    if (goalT1 > goalT2) {
-      winner = match.teams.team1;
-      defeated = match.teams.team2;
-      const { data } = await axios.put(`match/result/${id}`, {
-        winner,
-        defeated,
-      });
-      MySwal.fire({
-        title: <p>Partida Finalizada!</p>,
-        text: `O time vencerdor foi o ${match.teams.team1}`,
-        icon: 'success',
-        timer: 2000,
-      });
-      console.log(data);
-      navigate('/partidas');
-    } else {
-      winner = match.teams.team2;
-      defeated = match.teams.team1;
-      const { data } = await axios.put(`match/result/${id}`, {
-        winner,
-        defeated,
-      });
-      MySwal.fire({
-        title: <p>Partida Finalizada!</p>,
-        text: `O time vencerdor foi o ${match.teams.team2}`,
-        icon: 'success',
-        timer: 2000,
-      });
-    }
+    const t1 = match.teams.team1;
+    const t2 = match.teams.team2;
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        winner: t1,
+        defeated: t2,
+      }),
+    };
+    fetch(
+      `https://apiintersala-production.up.railway.app/match/result/${match._id}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -151,24 +121,27 @@ function CurrentMatch() {
               )}
             </div>
           ) : (
-            <div className="btnStart">
-              {finishingMatch === true ? (
-                <button type="submit" onClick={finishMatch}>
-                  Finalizar Partida
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  onClick={
-                    secondHalf === true ? startingSecondHalf : startingMatch
-                  }
-                >
-                  {secondHalf === true
-                    ? 'Iniciar Segundo Tempo'
-                    : 'Iniciar Partida'}
-                </button>
-              )}
-            </div>
+            <button type="submit" onClick={finishMatch}>
+              Finalizar Partida
+            </button>
+            // <div className="btnStart">
+            //   {finishingMatch === true ? (
+            //     <button type="submit" onClick={finishMatch}>
+            //       Finalizar Partida
+            //     </button>
+            //   ) : (
+            //     <button
+            //       type="submit"
+            //       onClick={
+            //         secondHalf === true ? startingSecondHalf : startingMatch
+            //       }
+            //     >
+            //       {secondHalf === true
+            //         ? 'Iniciar Segundo Tempo'
+            //         : 'Iniciar Partida'}
+            //     </button>
+            //   )}
+            // </div>
           )}
           <div className="team-goals">
             <div className="teamMatch-1">
