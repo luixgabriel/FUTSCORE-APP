@@ -14,6 +14,7 @@ import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import Timer from '../../components/Timer/Timer';
 import LineUp from '../../components/LineUp/LineUp';
 import Loading from '../../components/Loading/Loading';
+import FinishingMatch2 from '../../components/FinishingMatch/FinishingMatch';
 
 const MySwal = withReactContent(Swal);
 
@@ -71,32 +72,32 @@ function CurrentMatch() {
     setFinishingMatch(true);
   };
 
-  const finishMatch = async () => {
-    const t1 = match.teams.team1;
-    const t2 = match.teams.team2;
-    const requestOptions = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        winner: t1,
-        defeated: t2,
-      }),
-    };
-    fetch(
-      `https://apiintersala-production.up.railway.app/match/result/${match._id}`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  };
+  // const finishMatch = async () => {
+  //   const t1 = match.teams.team1;
+  //   const t2 = match.teams.team2;
+  //   const requestOptions = {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       winner: t1,
+  //       defeated: t2,
+  //     }),
+  //   };
+  //   fetch(
+  //     `https://apiintersala-production.up.railway.app/match/result/${match._id}`,
+  //     requestOptions
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <>
       <Header />
-
+      <FinishingMatch2 match={match} />
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
@@ -121,9 +122,8 @@ function CurrentMatch() {
               )}
             </div>
           ) : (
-            <button type="submit" onClick={finishMatch}>
-              Finalizar Partida
-            </button>
+            // <button type="submit" onClick={finishMatch}>
+            <button type="submit">Finalizar Partida</button>
             // <div className="btnStart">
             //   {finishingMatch === true ? (
             //     <button type="submit" onClick={finishMatch}>
