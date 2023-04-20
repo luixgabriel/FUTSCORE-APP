@@ -29,8 +29,6 @@ function CurrentMatch() {
   const [goalT2, setGoalT2] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
   const [finishingMatch, setFinishingMatch] = useState(false);
-  const [winner, setWinner] = useState('');
-  const [defeated, setDefeated] = useState('');
 
   const navigate = useNavigate();
 
@@ -72,25 +70,54 @@ function CurrentMatch() {
   };
 
   const finishMatch = async () => {
-    const t1 = match.teams.team1;
-    const t2 = match.teams.team2;
-    const requestOptions = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        winner: t1,
-        defeated: t2,
-      }),
-    };
-    fetch(
-      `https://apiintersala-production.up.railway.app/match/result/${match._id}`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    let winner;
+    let defeated;
+    let draw = false;
+
+    if (goalT1 > goalT2) {
+      winner = match.teams.team1;
+      defeated = match.teams.team2;
+
+      const response = await axios.put(`match/result/${match._id}`, {
+        winner,
+        defeated,
+      });
+      await axios.put('update', {
+        winner,
+        defeated,
+      });
+    } else if (goalT1 === goalT2) {
+      draw = true;
+      winner = match.teams.team1;
+      defeated = match.teams.team2;
+
+      const response = await axios.put(`match/result/${match._id}`, {
+        winner,
+        defeated,
+        draw,
+      });
+
+      console.log(response);
+
+      // RESOLVER AQUI
+      await axios.put('update', {
+        draw: true,
+        winner,
+        defeated,
+      });
+    } else {
+      winner = match.teams.team2;
+      defeated = match.teams.team1;
+
+      const response = await axios.put(`match/result/${match._id}`, {
+        winner,
+        defeated,
+      });
+      await axios.put('update', {
+        winner,
+        defeated,
+      });
+    }
   };
 
   return (
