@@ -29,6 +29,7 @@ function CurrentMatch() {
   const [goalT2, setGoalT2] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
   const [finishingMatch, setFinishingMatch] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -75,6 +76,7 @@ function CurrentMatch() {
     let draw = false;
 
     if (goalT1 > goalT2) {
+      setLoading(true);
       winner = match.teams.team1;
       defeated = match.teams.team2;
 
@@ -86,7 +88,9 @@ function CurrentMatch() {
         winner,
         defeated,
       });
+      navigate('/partidas');
     } else if (goalT1 === goalT2) {
+      setLoading(true);
       draw = true;
       winner = match.teams.team1;
       defeated = match.teams.team2;
@@ -97,15 +101,14 @@ function CurrentMatch() {
         draw,
       });
 
-      console.log(response);
-
-      // RESOLVER AQUI
       await axios.put('update', {
         draw: true,
         winner,
         defeated,
       });
+      navigate('/partidas');
     } else {
+      setLoading(true);
       winner = match.teams.team2;
       defeated = match.teams.team1;
 
@@ -117,13 +120,14 @@ function CurrentMatch() {
         winner,
         defeated,
       });
+      navigate('/partidas');
     }
   };
 
   return (
     <>
       <Header />
-
+      {loading && <Loading />}
       <div className="currentMatch-main">
         <div className="currentMatch-section">
           <div className="title-teams">
@@ -148,27 +152,24 @@ function CurrentMatch() {
               )}
             </div>
           ) : (
-            <button type="submit" onClick={finishMatch}>
-              Finalizar Partida
-            </button>
-            // <div className="btnStart">
-            //   {finishingMatch === true ? (
-            //     <button type="submit" onClick={finishMatch}>
-            //       Finalizar Partida
-            //     </button>
-            //   ) : (
-            //     <button
-            //       type="submit"
-            //       onClick={
-            //         secondHalf === true ? startingSecondHalf : startingMatch
-            //       }
-            //     >
-            //       {secondHalf === true
-            //         ? 'Iniciar Segundo Tempo'
-            //         : 'Iniciar Partida'}
-            //     </button>
-            //   )}
-            // </div>
+            <div className="btnStart">
+              {finishingMatch === true ? (
+                <button type="submit" onClick={finishMatch}>
+                  Finalizar Partida
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  onClick={
+                    secondHalf === true ? startingSecondHalf : startingMatch
+                  }
+                >
+                  {secondHalf === true
+                    ? 'Iniciar Segundo Tempo'
+                    : 'Iniciar Partida'}
+                </button>
+              )}
+            </div>
           )}
           <div className="team-goals">
             <div className="teamMatch-1">

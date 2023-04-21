@@ -5,7 +5,8 @@ import Header from '../../components/Header/Header';
 
 function Tables() {
   const [teams, setTeams] = useState([]);
-  const [players, setPlayers] = useState([]);
+  const [scorersTable, setScorersTable] = useState([]);
+  const [assistsTable, setAssistsTable] = useState([]);
 
   useEffect(() => {
     const getTeams = async () => {
@@ -14,15 +15,17 @@ function Tables() {
     };
     const getPlayers = async () => {
       const response = await axios.get('/player/showPlayers');
-      setPlayers(response.data);
+      setScorersTable(response.data.sort((a, b) => b.goals - a.goals));
+      setAssistsTable(response.data.sort((a, b) => b.assists - a.assists));
     };
 
     getTeams();
     getPlayers();
   }, []);
 
-  console.log(players);
-  console.log(teams);
+  if (teams) {
+    teams.sort((a, b) => b.wins - a.wins);
+  }
 
   return (
     <>
@@ -65,10 +68,12 @@ function Tables() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>luis</td>
-                    <td>15</td>
-                  </tr>
+                  {scorersTable.map((s) => (
+                    <tr>
+                      <td>{s.name}</td>
+                      <td>{s.goals}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -82,10 +87,12 @@ function Tables() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>luis</td>
-                    <td>15</td>
-                  </tr>
+                  {assistsTable.map((a) => (
+                    <tr>
+                      <td>{a.name}</td>
+                      <td>{a.assists}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
