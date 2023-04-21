@@ -4,6 +4,7 @@ import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import Header from '../../components/Header/Header';
 import noShield from '../../assets/imgs/no-shield.png';
 import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
+import ModalTeam from '../../components/ModalTeam/ModalTeam';
 import './Team.css';
 import axios from '../../services/axios';
 
@@ -24,6 +25,7 @@ function Teams() {
   return (
     <>
       <Header />
+      <ModalTeam />
       <div className="players-main">
         <div className="section-players">
           <div className="titles">
