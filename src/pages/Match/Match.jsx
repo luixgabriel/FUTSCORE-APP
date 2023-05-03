@@ -7,6 +7,7 @@ import Header from '../../components/Header/Header';
 import './Match.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import shirtTeam from '../../assets/imgs/shirtTeam.png';
+import Loading from '../../components/Loading/Loading';
 import axios from '../../services/axios';
 
 const MySwal = withReactContent(Swal);
@@ -18,6 +19,7 @@ function Match() {
   const [team2, setTeam2] = useState('');
   const [teams, setTeams] = useState([]);
   const [match, setMatch] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -69,21 +71,23 @@ function Match() {
         timer: 2000,
         confirmButtonText: 'Vamos tentar novamente.',
       });
-      return;
+    } else {
+      setLoading(true);
+      const teamsCreate = [team1, team2];
+      const { data } = await axios.post('match/', {
+        name: teamsCreate,
+        duration,
+        times,
+      });
+      setMatch(data);
+      navigate('/partidas');
     }
-    const teamsCreate = [team1, team2];
-    const { data } = await axios.post('match/', {
-      name: teamsCreate,
-      duration,
-      times,
-    });
-    setMatch(data);
-    navigate('/partidas');
   };
 
   return (
     <>
       <Header />
+      {loading && <Loading />}
       <div className="match-main">
         <div className="section-match">
           <img src={soccerField} alt={soccerField} className="soccerField" />

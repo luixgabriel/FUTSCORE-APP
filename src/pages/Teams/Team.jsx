@@ -25,6 +25,10 @@ function Teams() {
     setSelectedTeam(id);
   };
 
+  const closeModal = () => {
+    setSelectedTeam(null);
+  };
+
   return (
     <>
       <Header />
@@ -67,7 +71,9 @@ function Teams() {
                 </button>
               </div>
             ))}
-            {selectedTeam && <ModalTeam isOpen id={selectedTeam} />}
+            {selectedTeam && (
+              <ModalTeam isOpen id={selectedTeam} isClosed={closeModal} />
+            )}
           </div>
         </div>
       </div>
