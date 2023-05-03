@@ -10,6 +10,7 @@ import axios from '../../services/axios';
 
 function Teams() {
   const [teams, setTeams] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState(null);
 
   useEffect(() => {
     const getTeams = async () => {
@@ -20,12 +21,13 @@ function Teams() {
     getTeams();
   }, []);
 
-  console.log(teams);
+  const handleTimeClick = (id) => {
+    setSelectedTeam(id);
+  };
 
   return (
     <>
       <Header />
-      <ModalTeam />
       <div className="players-main">
         <div className="section-players">
           <div className="titles">
@@ -55,9 +57,17 @@ function Teams() {
                     <FaWindowClose />
                   </Link>
                 </div>
-                <button type="submit">Mais informações</button>
+                <button
+                  type="submit"
+                  onClick={() => {
+                    handleTimeClick(t._id);
+                  }}
+                >
+                  Mais informações
+                </button>
               </div>
             ))}
+            {selectedTeam && <ModalTeam isOpen id={selectedTeam} />}
           </div>
         </div>
       </div>
