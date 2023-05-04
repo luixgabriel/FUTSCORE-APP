@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
 import './RegisterTeam.css';
 import axios from '../../services/axios';
@@ -30,13 +32,15 @@ function RegisterTeam() {
     console.log(data);
 
     if (data.msg) {
-      MySwal.fire({
-        title: <p>Ooops..</p>,
-        text: data.msg,
-        icon: 'error',
-        timer: 2000,
-        confirmButtonText: 'Tentar novamente',
-      });
+      toast.error(data.msg);
+
+      // MySwal.fire({
+      //   title: <p>Ooops..</p>,
+      //   text: data.msg,
+      //   icon: 'error',
+      //   timer: 2000,
+      //   confirmButtonText: 'Tentar novamente',
+      // });
     } else {
       MySwal.fire({
         title: <p>Tudo certo!</p>,
@@ -58,6 +62,7 @@ function RegisterTeam() {
   return (
     <>
       <Header />
+      <ToastContainer />
       <div className="registerTeam-main">
         <div className="registerTeam">
           <h1>Registre seu time</h1>
