@@ -49,15 +49,7 @@ function ListMatchs() {
 
           {matchsInProgress.map((match) => (
             <div key={match._id} className="match-info">
-              <div
-                className="t"
-                // style={{
-                //   display: 'flex',
-                //   justifyContent: 'center',
-                //   width: '25%',
-                //   // border: '1px solid red',
-                // }}
-              >
+              <div className="scoreboardTeams">
                 <h4>{match.teams.team1}</h4>
                 <h4>x</h4>
                 <h4>{match.teams.team2}</h4>

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
 import './RegisterPlayer.css';
 import axios from '../../services/axios';
-
-const MySwal = withReactContent(Swal);
 
 function RegisterPlayer() {
   const [name, setName] = useState('');
@@ -22,34 +20,16 @@ function RegisterPlayer() {
     });
 
     if (data.msg) {
-      MySwal.fire({
-        title: <p>Ooops..</p>,
-        text: data.msg,
-        icon: 'error',
-        timer: 2000,
-        confirmButtonText: 'Tentar novamente',
-      });
+      toast.error(data.msg);
     } else {
-      MySwal.fire({
-        title: <p>Tudo certo!</p>,
-        text: 'Jogador registrado com sucesso.',
-        icon: 'success',
-        timer: 2000,
-      });
+      toast.success('Tudo certo!');
     }
-
-    // MySwal.fire({
-    //   title: <p>Hello World</p>,
-    //   didOpen: () => {
-    //     // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-    //     MySwal.showLoading();
-    //   },
-    // }).then(() => MySwal.fire(<p>Shorthand works too</p>));
   };
 
   return (
     <>
       <Header />
+      <ToastContainer />
       <div className="registerTeam-main">
         <div className="registerTeam">
           <h1>Registre o jogador</h1>

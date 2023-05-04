@@ -46,7 +46,7 @@ function Tables() {
               </thead>
               <tbody>
                 {teams.map((t) => (
-                  <tr>
+                  <tr key={t._id}>
                     <td>{t.name}</td>
                     <td>{t.wins + t.defeats + t.draws}</td>
                     <td>{t.wins}</td>
@@ -69,7 +69,7 @@ function Tables() {
                 </thead>
                 <tbody>
                   {scorersTable.map((s) => (
-                    <tr>
+                    <tr key={s._id}>
                       <td>{s.name}</td>
                       <td>{s.goals}</td>
                     </tr>
@@ -88,7 +88,7 @@ function Tables() {
                 </thead>
                 <tbody>
                   {assistsTable.map((a) => (
-                    <tr>
+                    <tr key={a._id}>
                       <td>{a.name}</td>
                       <td>{a.assists}</td>
                     </tr>

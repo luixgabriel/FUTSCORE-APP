@@ -34,34 +34,39 @@ function Players() {
           </div>
 
           <table>
-            <tr>
-              <th>
-                <img src={Shirt} alt="camisatime" />
-              </th>
-              <th>NOME</th>
-              <th>TIME</th>
-              <th>GOLS</th>
-              <th>ASSISTÊNCIAS</th>
-              <th>AÇÕES</th>
-            </tr>
-            {players.map((player) => (
-              <tr key={player._id}>
-                <td>{player.numberTshirt}</td>
-                <td>{player.name}</td>
-                <td>{player.team}</td>
-                <td>{player.goals}</td>
-                <td>{player.assists}</td>
-                <td>
-                  <Link to="/">
-                    <FaEdit />
-                  </Link>
-
-                  <Link to="/">
-                    <FaWindowClose />
-                  </Link>
-                </td>
+            <thead>
+              <tr>
+                <th>
+                  <img src={Shirt} alt="camisatime" />
+                </th>
+                <th>NOME</th>
+                <th>TIME</th>
+                <th>GOLS</th>
+                <th>ASSISTÊNCIAS</th>
+                <th>AÇÕES</th>
               </tr>
-            ))}
+            </thead>
+
+            <tbody>
+              {players.map((player) => (
+                <tr key={player._id}>
+                  <td>{player.numberTshirt}</td>
+                  <td>{player.name}</td>
+                  <td>{player.team}</td>
+                  <td>{player.goals}</td>
+                  <td>{player.assists}</td>
+                  <td>
+                    <Link to="/">
+                      <FaEdit />
+                    </Link>
+
+                    <Link to="/">
+                      <FaWindowClose />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
           {players.length <= 0 && <LoadingTimer />}
         </div>

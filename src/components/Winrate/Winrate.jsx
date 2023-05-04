@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function Winrate({ winRate, size, strokeWidth, color }) {
   const circumference = Math.PI * (size - strokeWidth);
   const dashOffset = circumference - (circumference * winRate) / 100;
+
   return (
     <svg width={size} height={size}>
       <circle

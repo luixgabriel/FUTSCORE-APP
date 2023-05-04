@@ -1,21 +1,14 @@
-/* eslint-disable no-useless-return */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import Header from '../../components/Header/Header';
 import axios from '../../services/axios';
-import Shirt from '../../assets/imgs/camisatime.png';
 import './CurrentMatch.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
 import ModalGoal from '../../components/ModalGoal/ModalGoal';
 import Timer from '../../components/Timer/Timer';
 import LineUp from '../../components/LineUp/LineUp';
 import Loading from '../../components/Loading/Loading';
-
-const MySwal = withReactContent(Swal);
 
 function CurrentMatch() {
   const { id } = useParams();
@@ -80,7 +73,7 @@ function CurrentMatch() {
       winner = match.teams.team1;
       defeated = match.teams.team2;
 
-      const response = await axios.put(`match/result/${match._id}`, {
+      await axios.put(`match/result/${match._id}`, {
         winner,
         defeated,
       });
@@ -95,7 +88,7 @@ function CurrentMatch() {
       winner = match.teams.team1;
       defeated = match.teams.team2;
 
-      const response = await axios.put(`match/result/${match._id}`, {
+      await axios.put(`match/result/${match._id}`, {
         winner,
         defeated,
         draw,
@@ -112,7 +105,7 @@ function CurrentMatch() {
       winner = match.teams.team2;
       defeated = match.teams.team1;
 
-      const response = await axios.put(`match/result/${match._id}`, {
+      await axios.put(`match/result/${match._id}`, {
         winner,
         defeated,
       });

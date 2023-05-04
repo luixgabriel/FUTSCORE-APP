@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
 import './Match.css';
 import soccerField from '../../assets/imgs/soccerStadium.png';
@@ -10,7 +10,6 @@ import shirtTeam from '../../assets/imgs/shirtTeam.png';
 import Loading from '../../components/Loading/Loading';
 import axios from '../../services/axios';
 
-const MySwal = withReactContent(Swal);
 function Match() {
   const [duration, setDuration] = useState(0);
   const [times, setTimes] = useState(0);
@@ -41,13 +40,7 @@ function Match() {
     }
 
     if (checkedboxes.length > 0) {
-      MySwal.fire({
-        title: <p>Ooops..</p>,
-        text: 'Só é permitido uma checkbox de duração selecionada.',
-        icon: 'error',
-        timer: 2000,
-        confirmButtonText: 'Vamos tentar novamente.',
-      });
+      toast.error('Só é permitido uma checkbox de duração selecionada.');
       setCheckedboxes([]);
       setTimeout(() => {
         window.location.reload();
@@ -64,13 +57,7 @@ function Match() {
       times === '' ||
       times === 0
     ) {
-      MySwal.fire({
-        title: <p>Ooops..</p>,
-        text: 'Preencha todas as informações da partida.',
-        icon: 'error',
-        timer: 2000,
-        confirmButtonText: 'Vamos tentar novamente.',
-      });
+      toast.error('Preencha todas as informações da partida.');
     } else {
       setLoading(true);
       const teamsCreate = [team1, team2];
@@ -87,6 +74,7 @@ function Match() {
   return (
     <>
       <Header />
+      <ToastContainer />
       {loading && <Loading />}
       <div className="match-main">
         <div className="section-match">

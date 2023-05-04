@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import noShield from '../../assets/imgs/no-shield.png';
 import Winrate from '../Winrate/Winrate';
@@ -79,7 +80,9 @@ function ModalTeam({ isOpen, isClosed, id }) {
                           ? 'green'
                           : 'red',
                     }}
-                  >{`${Math.round(winrate)}%`}</h2>
+                  >
+                    {isNaN(winrate) ? '0%' : `${Math.round(winrate)}%`}
+                  </h2>
                 </div>
               </>
             ) : (
@@ -91,5 +94,17 @@ function ModalTeam({ isOpen, isClosed, id }) {
     );
   }
 }
+
+ModalTeam.propTypes = {
+  isOpen: PropTypes.bool,
+  isClosed: PropTypes.bool,
+  id: PropTypes.string,
+};
+
+ModalTeam.defaultProps = {
+  isOpen: false,
+  isClosed: false,
+  id: '',
+};
 
 export default ModalTeam;

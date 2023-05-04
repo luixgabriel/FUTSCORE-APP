@@ -86,14 +86,17 @@
     transition: all ease 0.4s;
 }
 
-.t {
+.match-info button:hover{
+  background-color: rgb(98, 241, 105);
+}
+
+.scoreboardTeams {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 0 30px;
 }
-.t h4 {
-
+.scoreboardTeams h4 {
   width: 33% ;
 }
 
