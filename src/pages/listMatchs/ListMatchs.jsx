@@ -21,10 +21,6 @@ function ListMatchs() {
     getMatches();
   }, []);
 
-  // if (matchsInProgress.length <= 0) {
-  //   return <Loading />;
-  // }
-
   return (
     <>
       <Header />

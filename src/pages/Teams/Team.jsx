@@ -25,6 +25,8 @@ function Teams() {
     setSelectedTeam(id);
   };
 
+  const handleDelete = (id) => {};
+
   const closeModal = () => {
     setSelectedTeam(null);
   };
@@ -54,11 +56,11 @@ function Teams() {
                 <h2>{t.name}</h2>
                 <span>{t.slogan}</span>
                 <div className="team-buttons">
-                  <Link to="/">
+                  <Link to="/times">
                     <FaEdit />
                   </Link>
-                  <Link to="/">
-                    <FaWindowClose />
+                  <Link to="/times">
+                    <FaWindowClose onClick={handleDelete(t._id)} />
                   </Link>
                 </div>
                 <button

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
+import Loading from '../../components/Loading/Loading';
 import './RegisterPlayer.css';
 import axios from '../../services/axios';
 
@@ -9,8 +10,10 @@ function RegisterPlayer() {
   const [name, setName] = useState('');
   const [team, setTeam] = useState('');
   const [numberTshirt, setNumberTshirt] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const { data } = await axios.post('player', {
@@ -20,8 +23,10 @@ function RegisterPlayer() {
     });
 
     if (data.msg) {
+      setLoading(false);
       toast.error(data.msg);
     } else {
+      setLoading(false);
       toast.success('Tudo certo!');
     }
   };
@@ -29,6 +34,7 @@ function RegisterPlayer() {
   return (
     <>
       <Header />
+      {loading && <Loading />}
       <ToastContainer />
       <div className="registerTeam-main">
         <div className="registerTeam">

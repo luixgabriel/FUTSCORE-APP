@@ -6,7 +6,6 @@ function Loading() {
   return (
     <div className="loading-screen">
       <img src={Ball} alt="Bola" />
-      <h2>Carregando...</h2>
     </div>
   );
 }
