@@ -25,7 +25,11 @@ function Teams() {
     setSelectedTeam(id);
   };
 
-  const handleDelete = (id) => {};
+  const handleDelete = async (id) => {
+    console.log(id);
+    const response = await axios.delete(`delete/${id}`);
+    console.log(response);
+  };
 
   const closeModal = () => {
     setSelectedTeam(null);
@@ -59,8 +63,14 @@ function Teams() {
                   <Link to="/times">
                     <FaEdit />
                   </Link>
-                  <Link to="/times">
-                    <FaWindowClose onClick={handleDelete(t._id)} />
+                  <Link
+                    to="/times"
+                    type="submit"
+                    onClick={() => {
+                      handleDelete(t._id);
+                    }}
+                  >
+                    <FaWindowClose />
                   </Link>
                 </div>
                 <button
