@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
 import Shirt from '../../assets/imgs/camisatime.png';
 import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
+import Loading from '../../components/Loading/Loading';
 import './Players.css';
 import axios from '../../services/axios';
 
 function Players() {
   const [players, setPlayers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getPlayers = async () => {
@@ -19,9 +23,24 @@ function Players() {
     getPlayers();
   }, []);
 
+  const handleDelete = async (e, id, index) => {
+    e.persist();
+    if (window.confirm('Tem certeza que deseja deletar esse jogador?')) {
+      setLoading(true);
+      await axios.delete(`player/deletePlayer/${id}`);
+      const newPlayers = [...players];
+      newPlayers.splice(index, 1);
+      setPlayers(newPlayers);
+      setLoading(false);
+      toast.success('Jogador deletado com sucesso!');
+    }
+  };
+
   return (
     <>
       <Header />
+      <ToastContainer />
+      {loading && <Loading />}
       <div className="players">
         <div className="list-players">
           <div className="titles-players">
@@ -48,7 +67,7 @@ function Players() {
             </thead>
 
             <tbody>
-              {players.map((player) => (
+              {players.map((player, index) => (
                 <tr key={player._id}>
                   <td>{player.numberTshirt}</td>
                   <td>{player.name}</td>
@@ -60,7 +79,12 @@ function Players() {
                       <FaEdit />
                     </Link>
 
-                    <Link to="/">
+                    <Link
+                      to="/jogadores"
+                      onClick={(e) => {
+                        handleDelete(e, player._id, index);
+                      }}
+                    >
                       <FaWindowClose />
                     </Link>
                   </td>

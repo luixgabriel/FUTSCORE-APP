@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { GiSoccerBall, GiTrashCan } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
+import Loading from '../../components/Loading/Loading';
 import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 import axios from '../../services/axios';
 import './ListMatchs.css';
 
 function ListMatchs() {
   const [matchsInProgress, setMatchsInProgress] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getMatches = async () => {
@@ -21,9 +25,24 @@ function ListMatchs() {
     getMatches();
   }, []);
 
+  const handleDelete = async (e, id, index) => {
+    e.persist();
+    if (window.confirm('Tem certeza que deseja deletar essa partida?')) {
+      setLoading(true);
+      await axios.delete(`match/deleteMatch/${id}`);
+      const newMatches = [...matchsInProgress];
+      newMatches.splice(index, 1);
+      setMatchsInProgress(newMatches);
+      setLoading(false);
+      toast.success('Partida deletada com sucesso!');
+    }
+  };
+
   return (
     <>
       <Header />
+      {loading && <Loading />}
+      <ToastContainer />
       <div className="listMatch-button">
         <button type="submit">
           <Link to="/criarPartida">Criar nova partida</Link>
@@ -43,7 +62,7 @@ function ListMatchs() {
           </div>
           {matchsInProgress.length <= 0 && <LoadingTimer />}
 
-          {matchsInProgress.map((match) => (
+          {matchsInProgress.map((match, index) => (
             <div key={match._id} className="match-info">
               <div className="scoreboardTeams">
                 <h4>{match.teams.team1}</h4>
@@ -63,7 +82,12 @@ function ListMatchs() {
                   </Link>
                 </button>
                 <button type="submit" style={{ backgroundColor: 'red' }}>
-                  <Link to="delete">
+                  <Link
+                    to="/partidas"
+                    onClick={(e) => {
+                      handleDelete(e, match._id, index);
+                    }}
+                  >
                     Excluir partida <GiTrashCan />
                   </Link>
                 </button>

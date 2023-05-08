@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from '../../components/Header/Header';
 import noShield from '../../assets/imgs/no-shield.png';
 import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
+import Loading from '../../components/Loading/Loading';
 import ModalTeam from '../../components/ModalTeam/ModalTeam';
 import './Team.css';
 import axios from '../../services/axios';
@@ -11,6 +14,7 @@ import axios from '../../services/axios';
 function Teams() {
   const [teams, setTeams] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getTeams = async () => {
@@ -25,10 +29,17 @@ function Teams() {
     setSelectedTeam(id);
   };
 
-  const handleDelete = async (id) => {
-    console.log(id);
-    const response = await axios.delete(`delete/${id}`);
-    console.log(response);
+  const handleDelete = async (e, id, index) => {
+    e.persist();
+    if (window.confirm('Tem certeza que deseja deletar esse time?')) {
+      setLoading(true);
+      await axios.delete(`delete/${id}`);
+      const newTeams = [...teams];
+      newTeams.splice(index, 1);
+      setTeams(newTeams);
+      setLoading(false);
+      toast.success('Time deletado com sucesso!');
+    }
   };
 
   const closeModal = () => {
@@ -38,6 +49,8 @@ function Teams() {
   return (
     <>
       <Header />
+      <ToastContainer />
+      {loading && <Loading />}
       <div className="players-main">
         <div className="section-players">
           <div className="titles">
@@ -51,7 +64,7 @@ function Teams() {
 
           <div className="teams">
             {teams.length <= 0 && <LoadingTimer />}
-            {teams.map((t) => (
+            {teams.map((t, index) => (
               <div className="list-teams" key={t._id}>
                 <img
                   src={t.shield === 'null' ? noShield : t.shield}
@@ -66,8 +79,8 @@ function Teams() {
                   <Link
                     to="/times"
                     type="submit"
-                    onClick={() => {
-                      handleDelete(t._id);
+                    onClick={(e) => {
+                      handleDelete(e, t._id, index);
                     }}
                   >
                     <FaWindowClose />
@@ -76,7 +89,7 @@ function Teams() {
                 <button
                   type="submit"
                   onClick={() => {
-                    handleTimeClick(t._id);
+                    handleTimeClick(t.id);
                   }}
                 >
                   Mais informações
