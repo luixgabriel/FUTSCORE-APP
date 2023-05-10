@@ -13,6 +13,8 @@ function ModalGoal({ id, team, isOpen, onClose }) {
   const [players, setPlayers] = useState([]);
   const [teamPlayers, setTeamPlayers] = useState([]);
 
+  console.log(team);
+
   useEffect(() => {
     const getPlayers = async () => {
       const response = await axios.get('/player/showPlayers');
