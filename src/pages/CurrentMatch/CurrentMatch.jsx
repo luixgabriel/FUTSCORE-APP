@@ -178,6 +178,7 @@ function CurrentMatch() {
                   setModalOpenTeam1(!modalOpenTeam1);
                   setGoalT1(goalT1 + 1);
                 }}
+                style={{ display: !startTimer ? 'none' : 'block' }}
               >
                 Gol do {teams.team1} <GiSoccerBall />
               </button>
@@ -202,6 +203,7 @@ function CurrentMatch() {
                   setModalOpenTeam2(!modalOpenTeam2);
                   setGoalT2(goalT2 + 1);
                 }}
+                style={{ display: !startTimer ? 'none' : 'block' }}
               >
                 Gol do {teams.team2} <GiSoccerBall />
               </button>
