@@ -26,6 +26,7 @@ function Teams() {
   }, []);
 
   const handleTimeClick = (id) => {
+    console.log(id);
     setSelectedTeam(id);
   };
 
@@ -89,7 +90,7 @@ function Teams() {
                 <button
                   type="submit"
                   onClick={() => {
-                    handleTimeClick(t.id);
+                    handleTimeClick(t._id);
                   }}
                 >
                   Mais informações

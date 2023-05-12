@@ -29,6 +29,11 @@
   letter-spacing: 2px;
 }
 
+.players-team tbody td:first-child{
+  height: 60px;
+
+}
+
 .players-table {
   margin-top: 30px;
   display: flex;
