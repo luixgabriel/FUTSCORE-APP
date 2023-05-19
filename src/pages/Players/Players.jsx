@@ -33,6 +33,7 @@ function Players() {
       setPlayers(newPlayers);
       setLoading(false);
       toast.success('Jogador deletado com sucesso!');
+      console.log();
     }
   };
 

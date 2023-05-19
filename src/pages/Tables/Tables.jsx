@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../services/axios';
 import './Tables.css';
 import Header from '../../components/Header/Header';
+import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 
 function Tables() {
   const [teams, setTeams] = useState([]);
@@ -56,6 +57,7 @@ function Tables() {
                 ))}
               </tbody>
             </table>
+            {teams.length <= 0 && <LoadingTimer />}
           </div>
           <div className="players-table">
             <div className="goals">
@@ -76,6 +78,7 @@ function Tables() {
                   ))}
                 </tbody>
               </table>
+              {scorersTable.length <= 0 && <LoadingTimer />}
             </div>
             <div className="assists">
               <h3>Maior Assistente</h3>
@@ -95,6 +98,7 @@ function Tables() {
                   ))}
                 </tbody>
               </table>
+              {assistsTable.length <= 0 && <LoadingTimer />}
             </div>
           </div>
         </div>

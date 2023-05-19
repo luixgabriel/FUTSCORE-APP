@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -38,7 +39,11 @@ function ModalTeam({ isOpen, isClosed, id }) {
             <AiFillCloseCircle size={40} onClick={handleModal} />
           </div>
           <div className="modal-team-header">
-            <img src={noShield} alt="no=shield" />
+            <img
+              src={
+                selectedTeam.shield === 'null' ? noShield : selectedTeam.shield
+              }
+            />
             <h1>{selectedTeam.name}</h1>
           </div>
           <div className="modal-team-body">
