@@ -98,13 +98,6 @@ function Match() {
                 <h2>Duração</h2>
                 <input
                   type="checkbox"
-                  name="1"
-                  value="1"
-                  onChange={checkboxChange}
-                />
-                1min
-                <input
-                  type="checkbox"
                   name="10"
                   value="10"
                   onChange={checkboxChange}
