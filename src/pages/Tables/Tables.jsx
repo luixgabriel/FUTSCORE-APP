@@ -6,6 +6,7 @@ import LoadingTimer from '../../components/LoadingTimer/LoadingTimer';
 
 function Tables() {
   const [teams, setTeams] = useState([]);
+  const [player, setPlayers] = useState([]);
   const [scorersTable, setScorersTable] = useState([]);
   const [assistsTable, setAssistsTable] = useState([]);
 
@@ -16,17 +17,14 @@ function Tables() {
     };
     const getPlayers = async () => {
       const response = await axios.get('/player/showPlayers');
-      setScorersTable(response.data.sort((a, b) => b.goals - a.goals));
+      setPlayers(response.data);
+      setScorersTable(player.sort((a, b) => b.goals - a.goals));
       setAssistsTable(response.data.sort((a, b) => b.assists - a.assists));
     };
 
     getTeams();
     getPlayers();
-  }, []);
-
-  if (teams) {
-    teams.sort((a, b) => b.wins - a.wins);
-  }
+  });
 
   return (
     <>
