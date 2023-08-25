@@ -27,7 +27,7 @@ git clone https://github.com/luixgabriel/FUTSCORE-APP.git
 2. Acesse o diretório do projeto:
 
 ```bash
-cd futscore
+cd FUTSCORE-APP
 ```
 
 3. Instale todas as dependências necessárias:
