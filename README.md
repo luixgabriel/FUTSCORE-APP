@@ -1,42 +1,56 @@
+# Intersalas APP
 
-<div align="center">
-<img src="https://github.com/FilipeLeoni/AnimeZeta-backend/assets/100960828/f889c44d-fe74-4758-a365-d6d8a1dfc3dd" width="100px" alt="AnimeZeta Logo"/>
+Bem-vindo ao Intersalas APP! Este é um aplicativo desenvolvido para ajudar a gerenciar e reservar salas de reunião, estudo ou qualquer outro propósito que você possa imaginar. Utilizamos React, JavaScript e Axios para criar uma interface intuitiva e eficaz para os usuários.
 
+## 🚀 Tecnologias utilizadas
 
-<h1>Intersalas APP - Frontend</h1>
+- **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
+- **JavaScript**: A linguagem de programação que dá vida às nossas páginas da web.
+- **Axios**: Uma biblioteca muito popular para realizar solicitações HTTP, usada para comunicação com APIs.
 
-</div>
+## 🎨 Telas
 
-## Descrição
-<p> Olá, bem vindo! Este é o frontend do projeto AnimeZeta, uma aplicação para gerenciar listas de animes. O frontend é responsável por fornecer a interface do usuário e interagir com o backend para exibir dados, adicionar animes à lista, gerenciar episódios e muito mais.</p>
+1. **Tela de Início**: Uma visão geral das salas disponíveis, com capacidade de filtragem por tamanho, equipamentos, entre outros.
+2. **Tela de Reserva**: Onde o usuário pode escolher o horário desejado e reservar uma sala.
+3. **Tela de Histórico**: Mostra todas as reservas feitas pelo usuário, permitindo modificações ou cancelamentos.
+4. **Tela de Configurações**: Para gerenciar preferências do usuário e configurações do aplicativo.
 
-## Tecnologias Utilizadas
+## 💡 Como usar
 
+1. Clone este repositório:
 
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
-![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+```
+git clone https://github.com/seunome/intersalas-app.git
+```
 
+2. Entre no diretório:
 
-## Progresso
-> :construction: Projeto em construção :construction:
+```
+cd intersalas-app
+```
 
-<br>
+3. Instale as dependências:
 
+```
+npm install
+```
 
-## Visão geral
-<p> Um pouco de como está ficando o projeto</p>
+4. Execute o aplicativo:
 
+```
+npm start
+```
 
-![Screenshot 2023-07-16 095522](https://github.com/FilipeLeoni/AnimeZeta-backend/assets/100960828/9b86e7fc-f1c8-477b-af14-06dc0a6381f3)
+O aplicativo agora estará rodando em `http://localhost:3000`.
 
-![Screenshot 2023-07-16 095530](https://github.com/FilipeLeoni/AnimeZeta-backend/assets/100960828/4536ccb6-6d4e-4b44-a394-a181de1ba333)
+## 🤝 Contribuindo
 
+Fique à vontade para enviar issues, pull requests e sugestões para melhorar o Intersalas APP!
 
-## API
-<p>Nesta aplicação, estou utilizando a Jikan API para coletar dados detalhados sobre animes. A Jikan API é uma API popular e abrangente que fornece acesso a informações sobre uma ampla variedade de animes, incluindo detalhes dos episódios, personagens, equipes de produção, classificações e muito mais.
+## 📜 Licença
 
-Com base nos dados obtidos por meio da Jikan API, estou construindo uma API personalizada que adiciona recursos adicionais para melhorar a experiência do usuário. Essa API personalizada permite que os usuários gerenciem suas listas de anime, definindo o status de cada anime (como "assistindo", "planejando assistir" ou "concluído"). Além disso, a API também oferece recursos de autenticação para garantir a segurança dos dados dos usuários.
-</p>
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+Desenvolvido com ❤️ por [Seu Nome](https://github.com/seunome).
