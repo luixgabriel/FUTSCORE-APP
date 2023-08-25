@@ -1,56 +1,53 @@
-# Intersalas APP
+# FUTSCORE: Gerenciador de Campeonatos
 
-Bem-vindo ao Intersalas APP! Este é um aplicativo desenvolvido para ajudar a gerenciar e reservar salas de reunião, estudo ou qualquer outro propósito que você possa imaginar. Utilizamos React, JavaScript e Axios para criar uma interface intuitiva e eficaz para os usuários.
+Bem-vindo ao FUTSCORE! Criamos esta plataforma especialmente para facilitar o gerenciamento de campeonatos de futebol, permitindo o cadastro eficaz de times, jogadores e partidas. Usando React, JavaScript e Axios, oferecemos uma interface amigável e eficiente para todos os amantes do esporte.
 
 ## 🚀 Tecnologias utilizadas
 
 - **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
-- **JavaScript**: A linguagem de programação que dá vida às nossas páginas da web.
-- **Axios**: Uma biblioteca muito popular para realizar solicitações HTTP, usada para comunicação com APIs.
+- **JavaScript**: A linguagem de programação que anima nossas páginas web.
+- **Axios**: Uma biblioteca altamente reputada para fazer solicitações HTTP, usada para comunicar-se com APIs.
 
 ## 🎨 Telas
 
-1. **Tela de Início**: Uma visão geral das salas disponíveis, com capacidade de filtragem por tamanho, equipamentos, entre outros.
-2. **Tela de Reserva**: Onde o usuário pode escolher o horário desejado e reservar uma sala.
-3. **Tela de Histórico**: Mostra todas as reservas feitas pelo usuário, permitindo modificações ou cancelamentos.
-4. **Tela de Configurações**: Para gerenciar preferências do usuário e configurações do aplicativo.
+1. **Dashboard**: Uma visão panorâmica dos campeonatos atuais, partidas vindouras e tabelas de classificação.
+2. **Cadastro de Times**: Aqui você pode adicionar novos times, detalhando nome, escudo e outros dados relevantes.
+3. **Cadastro de Jogadores**: Adicione jogadores, defina suas posições e associe-os a times específicos.
+4. **Agendamento de Partidas**: Determine jogos futuros, definindo as equipes participantes, data, horário e local.
+5. **Resultados**: Apresenta os desfechos das partidas, atualizando automaticamente estatísticas e rankings.
 
 ## 💡 Como usar
 
 1. Clone este repositório:
 
-```
-git clone https://github.com/seunome/intersalas-app.git
-```
-
-2. Entre no diretório:
-
-```
-cd intersalas-app
+```bash
+git clone https://github.com/luixgabriel/FUTSCORE-APP.git
 ```
 
-3. Instale as dependências:
+2. Acesse o diretório do projeto:
 
+```bash
+cd futscore
 ```
+
+3. Instale todas as dependências necessárias:
+
+```bash
 npm install
 ```
 
-4. Execute o aplicativo:
+4. Execute a aplicação:
 
-```
-npm start
+```bash
+npm run dev
 ```
 
-O aplicativo agora estará rodando em `http://localhost:3000`.
+Agora, o FUTSCORE estará ativo em `http://localhost:3000`.
 
 ## 🤝 Contribuindo
 
-Fique à vontade para enviar issues, pull requests e sugestões para melhorar o Intersalas APP!
-
-## 📜 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Sua contribuição é muito bem-vinda! Se você tem sugestões, correções ou melhorias, sinta-se à vontade para abrir issues, enviar pull requests e nos ajudar a aprimorar o FUTSCORE.
 
 ---
 
-Desenvolvido com ❤️ por [Seu Nome](https://github.com/seunome).
+Desenvolvido por [Luis Gabriel](https://github.com/luixgabriel).
