@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://apiintersala-production.up.railway.app/',
+  baseURL: 'https://futscore.onrender.com/',
   headers: {
     'Content-Type': 'application/json', // Tipo de conteúdo das requisições
     // Cabeçalho de autenticação
