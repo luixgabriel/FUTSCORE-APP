@@ -2,6 +2,9 @@
 
 Bem-vindo ao FUTSCORE! Criamos esta plataforma especialmente para facilitar o gerenciamento de campeonatos de futebol, permitindo o cadastro eficaz de times, jogadores e partidas. Usando React, JavaScript e Axios, oferecemos uma interface amigável e eficiente para todos os amantes do esporte.
 
+![image](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/ded70f80-e1b5-4db5-ac22-443ab4d57f68)
+
+
 ## 🚀 Tecnologias utilizadas
 
 - **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
