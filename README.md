@@ -44,10 +44,6 @@ npm run dev
 
 Agora, o FUTSCORE estará ativo em `http://localhost:3000`.
 
-## 🤝 Contribuindo
-
-Sua contribuição é muito bem-vinda! Se você tem sugestões, correções ou melhorias, sinta-se à vontade para abrir issues, enviar pull requests e nos ajudar a aprimorar o FUTSCORE.
-
 ---
 
 Desenvolvido por [Luis Gabriel](https://github.com/luixgabriel).
