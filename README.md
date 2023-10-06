@@ -36,7 +36,11 @@ Bem-vindo ao FUTSCORE! Criamos esta plataforma especialmente para facilitar o ge
 ![lista partidas](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/c9aa53c1-ff21-4c94-b101-ba5a7fcf4743)
 
 
-6. **Resultados**: Apresenta os desfechos das partidas, atualizando automaticamente estatísticas e rankings.
+5. **Resultados**: Apresenta os desfechos das partidas, atualizando automaticamente estatísticas e rankings.
+
+![partidas finalizadas](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/b94a0fd4-460a-4143-95f3-0e2bbf62f952)
+![TABELAS](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/c609bc22-4d36-43ed-8233-9c8a9e94e879)
+
 
 ## 💡 Como usar
 
