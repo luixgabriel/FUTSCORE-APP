@@ -14,10 +14,29 @@ Bem-vindo ao FUTSCORE! Criamos esta plataforma especialmente para facilitar o ge
 ## 🎨 Telas
 
 1. **Dashboard**: Uma visão panorâmica dos campeonatos atuais, partidas vindouras e tabelas de classificação.
-2. **Cadastro de Times**: Aqui você pode adicionar novos times, detalhando nome, escudo e outros dados relevantes.
-3. **Cadastro de Jogadores**: Adicione jogadores, defina suas posições e associe-os a times específicos.
-4. **Agendamento de Partidas**: Determine jogos futuros, definindo as equipes participantes, data, horário e local.
-5. **Resultados**: Apresenta os desfechos das partidas, atualizando automaticamente estatísticas e rankings.
+
+![image](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/ded70f80-e1b5-4db5-ac22-443ab4d57f68)
+
+2. **Times e Cadastro de Times**: Aqui você pode adicionar novos times, detalhando nome, escudo e outros dados relevantes.
+
+
+![TIMES](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/26929863-d7fe-42e5-9846-095b5aeef18f)
+![cadastre seu time](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/477d330c-c67c-49e6-ae74-afa6e73001a7)
+
+3. **Jogadores e Cadastro de Jogadores**: Adicione jogadores, defina o número da sua camisa e associe-os a times específicos.
+
+![jogadores](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/8f994d32-897e-440f-821a-154a5e2b6824)
+![cadastre o jogador](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/84fdf13e-cb9c-4fc0-9574-5a0228828853)
+
+
+4. **Partidas e Agendamento de Partidas**: Determine jogos futuros e definindo as equipes participantes.
+
+
+![INICIAR PARTIDA](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/f8fea9f5-ccab-4cce-bbf0-5db0736e5e99)
+![lista partidas](https://github.com/luixgabriel/FUTSCORE-APP/assets/70019908/c9aa53c1-ff21-4c94-b101-ba5a7fcf4743)
+
+
+6. **Resultados**: Apresenta os desfechos das partidas, atualizando automaticamente estatísticas e rankings.
 
 ## 💡 Como usar
 
